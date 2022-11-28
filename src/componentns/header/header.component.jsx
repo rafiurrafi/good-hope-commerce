@@ -1,7 +1,8 @@
-import { FaFacebookF, FaTwitter, FaDribbble, FaSearch } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaDribbble } from "react-icons/fa";
 import Container from "../HOC/Container/container.component";
 import { Link } from "react-router-dom";
 import "./header.style.scss";
+import Searchbar from "../searchbar/searchbar.component";
 
 export function HeaderTop() {
   return (
@@ -60,14 +61,7 @@ export function HeaderMain() {
             <Link to="/">Blog</Link>
           </li>
         </ul>
-        <div className="header__search-box">
-          <form action="">
-            <input type="text" placeholder="Search anything" />
-            <button>
-              <FaSearch />
-            </button>
-          </form>
-        </div>
+        <Searchbar />
       </Container>
     </header>
   );

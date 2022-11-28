@@ -1,0 +1,31 @@
+.search-box {
+  position: relative;
+  form {
+    border: 1px solid #f1f1f1;
+    padding: 1rem;
+    color: var(--text-color);
+    button {
+      background-color: transparent;
+      cursor: pointer;
+      border: none;
+      svg {
+        color: inherit;
+      }
+    }
+    input {
+      border: none;
+      color: inherit;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  &__auto {
+    background-color: red;
+    width: 100%;
+    height: 40rem;
+    position: absolute;
+    top: 3rem;
+    left: 0;
+  }
+}
