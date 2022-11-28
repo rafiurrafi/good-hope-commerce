@@ -1,0 +1,54 @@
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--gray-dark-1);
+  padding: 2rem 0;
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.6rem;
+    transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+  &__login {
+    a {
+      &:first-child {
+        padding-right: 2rem;
+        border-right: 1px solid white;
+      }
+      &:last-child {
+        padding-left: 2rem;
+      }
+    }
+  }
+  &__icons {
+    a {
+      padding: 0 1rem;
+      display: inline-block;
+    }
+  }
+  &__icon {
+  }
+  &__cart {
+    select {
+      color: white;
+      border: none;
+      background-color: transparent;
+
+      option {
+        color: var(--gray-dark-1);
+      }
+    }
+    a:nth-of-type(1) {
+      padding: 0 1rem;
+      margin: 0 1rem;
+      border-left: 1px solid white;
+      border-right: 1px solid white;
+    }
+  }
+}
+.header {
+}

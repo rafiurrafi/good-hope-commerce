@@ -1,7 +1,10 @@
+import { HeaderMain, HeaderTop } from "./componentns/header/header.component";
+import "./app.scss";
 const App = () => {
   return (
     <div>
-      <h1>Wow biz 😏</h1>
+      <HeaderTop />
+      <HeaderMain />
     </div>
   );
 };
