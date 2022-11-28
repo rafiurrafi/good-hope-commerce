@@ -1,7 +1,9 @@
 .header-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   background-color: var(--gray-dark-1);
   padding: 2rem 0;
   a {
