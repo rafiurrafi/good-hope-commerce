@@ -7,7 +7,7 @@ const Home = () => {
     <div>
       {/* <Hero /> */}
       {/* <Container></Container> */}
-      <SingleFashion />
+      <SingleFashion type="right" />
     </div>
   );
 };

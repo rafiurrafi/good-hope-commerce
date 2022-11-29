@@ -6,9 +6,13 @@ import {
   HeadingLink,
   SmallText,
 } from "../typography/typography.component";
-const SingleFashion = () => {
+const SingleFashion = ({ type = "" }) => {
   return (
-    <div className="single-fashion">
+    <div
+      className={`single-fashion ${
+        type === "right" ? "single-fashion--right" : ""
+      }`}
+    >
       <div className="single-fashion__img">
         <img src={boy} alt="" />
       </div>

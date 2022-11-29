@@ -1,5 +1,6 @@
 .single-fashion {
   display: flex;
+
   &__img {
     flex: 0 0 50%;
     img {
@@ -9,9 +10,17 @@
   &__content {
     align-self: center;
     width: 42rem;
-    // border: 1px solid red;
     outline: 1px solid var(--gray-text);
     padding: 2rem 3rem;
     outline-offset: 4rem;
+    position: relative;
+    z-index: 2;
+  }
+  &--right &__content {
+    text-align: right;
+    order: 1;
+  }
+  &--right &__img {
+    order: 2;
   }
 }
