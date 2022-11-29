@@ -1,5 +1,9 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
+import { SubHeading } from "../typography/typography.component";
+import slider1 from "./img/slider-1.jpg";
+import slider2 from "./img/slider-2.jpg";
+import "./hero.style.scss";
 const Hero = () => {
   const settings = {
     dots: true,
@@ -9,11 +13,13 @@ const Hero = () => {
     slidesToScroll: 1,
   };
   return (
-    <div>
-      <h2> Single Item</h2>
+    <div className="hero">
       <Slider {...settings}>
-        <div>
-          <h3>1</h3>
+        <div className="hero__single">
+          <img src={slider1} className="hero__img" alt="" />
+          <div className="hero__text">
+            <SubHeading color="black">Best Collection</SubHeading>
+          </div>
         </div>
         <div>
           <h3>2</h3>

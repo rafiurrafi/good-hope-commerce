@@ -1,0 +1,18 @@
+.heading-primary {
+}
+.sub-heading {
+  font-size: var(--font-size-4);
+  display: block;
+}
+.heading-link {
+  font-size: var(--font-size-3);
+  text-decoration: none;
+  color: var(--text-color);
+  &:hover {
+    color: var(--color-primary);
+  }
+}
+.small-text {
+  font-size: var(--font-sm);
+  line-height: 1.6;
+}
