@@ -10,6 +10,9 @@ export const H1 = ({ children, color = "white", style }) => {
     </h1>
   );
 };
+export function H4({ children }) {
+  return <h4 className="heading-tetra">{children}</h4>;
+}
 export function SubHeading({ children, color }) {
   <span className="sub-heading" style={{ color }}>
     {children}
@@ -34,6 +37,13 @@ export function SmallText({ children, style = {} }) {
     <p className="small-text" style={{ ...style }}>
       {children}
     </p>
+  );
+}
+export function ButtonIcon({ icon }) {
+  return (
+    <button className="btn-icon">
+      <span>{icon}</span>
+    </button>
   );
 }
 export default Typograhpy;

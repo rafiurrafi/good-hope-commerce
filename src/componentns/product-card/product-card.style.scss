@@ -1,0 +1,24 @@
+.product-card {
+  width: 30%;
+  position: relative;
+  &__img {
+    height: 70%;
+  }
+  &__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--gray-text);
+  }
+  &__icons {
+    width: 80%;
+    margin-left: 10%;
+    display: flex;
+    justify-content: space-between;
+  }
+}
