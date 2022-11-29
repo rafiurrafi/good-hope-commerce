@@ -1,7 +1,7 @@
 import { FaFacebookF, FaTwitter, FaDribbble } from "react-icons/fa";
 import { HiRss } from "react-icons/hi";
 import { GiBee } from "react-icons/gi";
-import Container from "../HOC/Container/container.component";
+import Container from "../common/Container/container.component";
 import { Link } from "react-router-dom";
 import "./header.style.scss";
 import Searchbar from "../searchbar/searchbar.component";
