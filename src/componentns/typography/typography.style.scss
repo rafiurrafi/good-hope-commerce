@@ -5,14 +5,32 @@
   display: block;
 }
 .heading-link {
+  display: block;
   font-size: var(--font-size-3);
   text-decoration: none;
   color: var(--text-color);
+  margin-bottom: 2rem;
   &:hover {
     color: var(--color-primary);
   }
 }
 .small-text {
   font-size: var(--font-sm);
+  color: black;
   line-height: 1.6;
+  margin-bottom: 3rem;
+}
+.btn-link {
+  text-transform: uppercase;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--text-color);
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 1px solid var(--gray-text);
+  transition: 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
 }

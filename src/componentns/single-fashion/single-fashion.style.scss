@@ -1,0 +1,17 @@
+.single-fashion {
+  display: flex;
+  &__img {
+    flex: 0 0 50%;
+    img {
+      width: 100%;
+    }
+  }
+  &__content {
+    align-self: center;
+    width: 42rem;
+    // border: 1px solid red;
+    outline: 1px solid var(--gray-text);
+    padding: 2rem 3rem;
+    outline-offset: 4rem;
+  }
+}

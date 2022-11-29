@@ -16,7 +16,11 @@ export function SubHeading({ children, color }) {
   </span>;
 }
 export function ButtonLink({ children, to = "/" }) {
-  return <Link to={`${to}`}>{children}</Link>;
+  return (
+    <Link to={`${to}`} className="btn-link">
+      {children}
+    </Link>
+  );
 }
 export function HeadingLink({ children, to }) {
   return (
@@ -26,8 +30,10 @@ export function HeadingLink({ children, to }) {
   );
 }
 export function SmallText({ children, style = {} }) {
-  <p className="small-text" style={{ ...style }}>
-    {children}
-  </p>;
+  return (
+    <p className="small-text" style={{ ...style }}>
+      {children}
+    </p>
+  );
 }
 export default Typograhpy;
