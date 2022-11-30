@@ -8,7 +8,7 @@ import Hero from "../../componentns/sliderr/hero.component";
 import { ProductContext } from "../../context/product.context";
 import "./home.style.scss";
 const Home = () => {
-  const { products } = useContext(ProductContext);
+  const { products, isLoading } = useContext(ProductContext);
   console.log(products);
   return (
     <div>
@@ -24,11 +24,15 @@ const Home = () => {
         </Container>
       </section>
       <div className="product-cards-home">
-        {products
-          ?.filter((_, id) => id < 4)
-          .map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
+        {isLoading ? (
+          <h1>Loading</h1>
+        ) : (
+          products
+            ?.filter((_, id) => id < 4)
+            .map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))
+        )}
       </div>
 
       <BannerFull />
