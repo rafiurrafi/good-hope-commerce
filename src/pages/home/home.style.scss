@@ -5,3 +5,8 @@
     grid-gap: 4rem;
   }
 }
+.product-cards-home {
+  grid-gap: 3rem;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
