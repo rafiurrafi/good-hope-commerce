@@ -6,12 +6,12 @@ import ProductCard from "../../componentns/product-card/product-card.component";
 import ProductTimer from "../../componentns/product-timer/product-timer.component";
 import SingleFashion from "../../componentns/single-fashion/single-fashion.component";
 import Hero from "../../componentns/sliderr/hero.component";
+import Testimonial from "../../componentns/testimonial/testimonial.component";
 import { ProductContext } from "../../context/product.context";
-import { featuresData } from "../../utils/data";
+import { featuresData, testimonialData } from "../../utils/data";
 import "./home.style.scss";
 const Home = () => {
   const { products, isLoading } = useContext(ProductContext);
-  console.log(products);
   return (
     <div>
       {/* <Hero /> */}
@@ -43,6 +43,11 @@ const Home = () => {
           <IconCard key={id} icon={icon} text={title} />
         ))}
       </div>
+      <section className="home-testimonial">
+        {testimonialData.map((testimonial) => (
+          <Testimonial key={testimonial.id} testimonial={testimonial} />
+        ))}
+      </section>
     </div>
   );
 };

@@ -20,3 +20,29 @@ export const featuresData = [
     icon: "assets/icons/support.png",
   },
 ];
+export const testimonialData = [
+  {
+    id: 1,
+    name: "Khan Jahan Ali",
+    position: "Developer",
+    image: "assets/testi/testi-01.jpg",
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+  },
+  {
+    id: 2,
+    name: "Sidratul Muntaha",
+    position: "Designer",
+    image: "assets/testi/testi-02.jpg",
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+  },
+  {
+    id: 3,
+    name: "Ustad E Azam",
+    position: "Chief Analyst",
+    image: "assets/testi/testi-03.jpg",
+    comment:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.",
+  },
+];

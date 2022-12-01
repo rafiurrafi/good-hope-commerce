@@ -1,0 +1,28 @@
+.testimonial {
+  display: flex;
+
+  &__img {
+    width: 12rem;
+    height: 14.4rem;
+    margin-right: 3rem;
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+  &__content {
+  }
+  &__header {
+    border-left: 2px solid var(--icon-color);
+    padding-left: 1.25rem;
+  }
+  &__name {
+  }
+  &__position {
+  }
+  &__comment {
+    margin-top: 1.5rem;
+    padding-left: 1.25rem;
+  }
+}
