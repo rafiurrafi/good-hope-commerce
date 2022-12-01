@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import BannerFull from "../../componentns/banner/banner.component";
+import BlogCard from "../../componentns/blog-card/blog-card.component";
 import Container from "../../componentns/common/Container/container.component";
 import IconCard from "../../componentns/common/loading/icon-card/icon-card.component";
 import ProductCard from "../../componentns/product-card/product-card.component";
@@ -47,6 +48,9 @@ const Home = () => {
         {testimonialData.map((testimonial) => (
           <Testimonial key={testimonial.id} testimonial={testimonial} />
         ))}
+      </section>
+      <section className="home-blog">
+        <BlogCard />
       </section>
     </div>
   );
