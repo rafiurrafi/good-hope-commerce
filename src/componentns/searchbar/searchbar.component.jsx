@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import Loading from "../common/loading/loading.component";
+import { ButtonLink } from "../typography/typography.component";
 import "./searchbar.style.scss";
 
 const Searchbar = () => {
@@ -28,7 +30,20 @@ const Searchbar = () => {
     } else setShowAuto(false);
   }
   function renderData() {
-    if (searchResult.length > 0) return <h3>Product found</h3>;
+    if (searchResult.length > 0)
+      return (
+        <div>
+          <h3>Product</h3>
+          {searchResult
+            .filter((_, id) => id < 3)
+            .map(({ id, title }) => (
+              <Link className="auto-link" to={`/products/${id}`} key={id}>
+                {title}
+              </Link>
+            ))}
+          <ButtonLink>Get All Result</ButtonLink>
+        </div>
+      );
     else return <h3>No result found</h3>;
   }
   return (
@@ -47,16 +62,13 @@ const Searchbar = () => {
       </form>
       {showAuto && (
         <div className="search-box__auto">
-          {/* {isLoading ? (
+          {isLoading ? (
             <div className="search-loading">
               <Loading />
             </div>
           ) : (
             renderData()
-          )} */}
-          <div className="search-loading">
-            <Loading />
-          </div>
+          )}
         </div>
       )}
     </div>
