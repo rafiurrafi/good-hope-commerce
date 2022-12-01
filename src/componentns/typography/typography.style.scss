@@ -56,4 +56,12 @@
   font-size: var(--font-size-4);
   margin-bottom: 1rem;
   color: var(--gray-text);
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
 }

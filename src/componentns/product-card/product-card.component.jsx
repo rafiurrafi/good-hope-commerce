@@ -3,8 +3,9 @@ import { BsSuitHeart, BsEye } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { ButtonIcon, H4 } from "../typography/typography.component";
 import "./product-card.style.scss";
+import { Link } from "react-router-dom";
 const ProductCard = ({ product }) => {
-  const { thumbnail, price, title, rating } = product;
+  const { id, thumbnail, price, title, rating } = product;
 
   return (
     <div className="product-card">
@@ -12,7 +13,9 @@ const ProductCard = ({ product }) => {
         <img src={thumbnail} alt="" />
         <div className="product-card__content">
           <div>
-            <H4>{title}</H4>
+            <H4>
+              <Link to={`/products/${id}`}>{title}</Link>{" "}
+            </H4>
             <p>${price}</p>
           </div>
           <div>{rating}</div>
