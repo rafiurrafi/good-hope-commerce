@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import Loading from "../common/loading/loading.component";
 import "./searchbar.style.scss";
 
 const Searchbar = () => {
@@ -46,7 +47,16 @@ const Searchbar = () => {
       </form>
       {showAuto && (
         <div className="search-box__auto">
-          {isLoading ? <h1>Laading</h1> : renderData()}
+          {/* {isLoading ? (
+            <div className="search-loading">
+              <Loading />
+            </div>
+          ) : (
+            renderData()
+          )} */}
+          <div className="search-loading">
+            <Loading />
+          </div>
         </div>
       )}
     </div>
