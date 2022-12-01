@@ -40,12 +40,13 @@
       &:first-of-type {
         margin-top: 2rem;
       }
-      &:last-of-type {
-        margin-bottom: 2rem;
-      }
+
       &:hover {
         color: var(--color-primary);
       }
+    }
+    .btn-link {
+      margin-top: 2rem;
     }
   }
   .search-loading {
