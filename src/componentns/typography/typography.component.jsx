@@ -18,9 +18,12 @@ export function SubHeading({ children, color = "white" }) {
     {children}
   </span>;
 }
-export function ButtonLink({ children, to = "/" }) {
+export function ButtonLink({ children, to = "/", size = "" }) {
   return (
-    <Link to={`${to}`} className="btn-link">
+    <Link
+      to={`${to}`}
+      className={`btn-link ${size === "small" ? "btn-link--sm" : ""}`}
+    >
       {children}
     </Link>
   );

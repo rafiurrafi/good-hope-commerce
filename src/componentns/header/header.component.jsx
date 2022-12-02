@@ -8,8 +8,12 @@ import { Link } from "react-router-dom";
 import "./header.style.scss";
 import Searchbar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
+import { useContext } from "react";
+import { CartContext } from "../../context/cart.context";
 
 export function HeaderTop() {
+  const { cartItems, cartTotal, cartCount } = useContext(CartContext);
+  // console.log(cartItems, cartTotal, cartCount);
   return (
     <div className="header-top">
       <Container>
@@ -49,7 +53,9 @@ export function HeaderTop() {
             <button href="">
               <BsCart4 />
             </button>
-            <div className="header-top__cart-count">99</div>
+            {cartCount && (
+              <div className="header-top__cart-count">{cartCount}</div>
+            )}
           </div>
         </div>
         <CartDropdown />

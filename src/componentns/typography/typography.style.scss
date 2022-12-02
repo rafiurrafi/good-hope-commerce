@@ -29,6 +29,10 @@
   padding: 1rem 3rem;
   border: 1px solid var(--gray-text);
   transition: 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+  &--sm {
+    padding: 0.7rem 0;
+    font-size: var(--font-sm) !important;
+  }
   &:hover {
     background-color: var(--color-primary);
     color: white;
