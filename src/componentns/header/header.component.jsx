@@ -1,10 +1,13 @@
 import { FaFacebookF, FaTwitter, FaDribbble } from "react-icons/fa";
 import { HiRss } from "react-icons/hi";
 import { GiBee } from "react-icons/gi";
+import { RiHeartLine } from "react-icons/ri";
+import { BsCart4 } from "react-icons/bs";
 import Container from "../common/Container/container.component";
 import { Link } from "react-router-dom";
 import "./header.style.scss";
 import Searchbar from "../searchbar/searchbar.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
 export function HeaderTop() {
   return (
@@ -37,9 +40,19 @@ export function HeaderTop() {
             <option value="">EUR</option>
             <option value="">BDT</option>
           </select>
-          <a href="">Cart</a>
-          <a href="">Cart</a>
+          <div className="header-top__cart-icon">
+            <button href="">
+              <RiHeartLine />
+            </button>
+          </div>
+          <div className="header-top__cart-icon">
+            <button href="">
+              <BsCart4 />
+            </button>
+            <div className="header-top__cart-count">99</div>
+          </div>
         </div>
+        <CartDropdown />
       </Container>
     </div>
   );
