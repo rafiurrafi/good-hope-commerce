@@ -1,0 +1,34 @@
+.checkout {
+  &__inputs {
+    & > * {
+      flex: 0 0 50%;
+    }
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 2rem;
+  }
+}
+.checkout {
+  .heading-tetra {
+    margin-bottom: 3rem;
+  }
+  .container {
+    display: flex;
+    gap: 3rem;
+  }
+  &__address {
+    flex: 0 0 65%;
+  }
+  &__pay {
+    flex: 0 0 35%;
+  }
+  .btn-link {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    background-color: var(--color-primary);
+    color: white;
+  }
+}

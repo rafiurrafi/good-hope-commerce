@@ -87,7 +87,7 @@ export function HeaderMain() {
             <Link to="/">About</Link>
           </li>
           <li>
-            <Link to="/">Pages</Link>
+            <Link to="/contact">Contact</Link>
           </li>
           <li>
             <Link to="/">Blog</Link>
