@@ -1,0 +1,37 @@
+.contact {
+  &__title {
+    font-size: var(--font-size-1);
+    text-align: center;
+    margin-bottom: 3rem;
+    span {
+      color: var(--color-primary);
+    }
+  }
+  &__details {
+    p {
+      color: var(--gray-text);
+    }
+    & > div {
+      margin-bottom: 2rem;
+    }
+  }
+  &__info {
+    display: flex;
+    margin-bottom: 1rem;
+    p:first-child {
+      margin-right: 1.2rem;
+    }
+  }
+  input {
+    margin-bottom: 2rem;
+  }
+  .btn-link {
+    padding: 1.5rem;
+    margin-top: 2rem;
+    text-align: center;
+    width: 100%;
+    display: block;
+    background-color: var(--color-primary);
+    color: white;
+  }
+}

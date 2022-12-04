@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import { ProductContext } from "../../context/product.context";
+import StarRatings from "react-star-ratings";
 const ProductCard = ({ product }) => {
   const { id, thumbnail, price, title, rating } = product;
   const { cartItems, addCartItem } = useContext(CartContext);
@@ -27,7 +28,15 @@ const ProductCard = ({ product }) => {
             </H4>
             <p>${price}</p>
           </div>
-          <div>{rating}</div>
+          <div>
+            {" "}
+            <StarRatings
+              rating={rating}
+              starDimension="10px"
+              starSpacing="2px"
+              starRatedColor="rgb(212,175,55)"
+            />
+          </div>
         </div>
       </div>
       <div className="product-card__overlay">

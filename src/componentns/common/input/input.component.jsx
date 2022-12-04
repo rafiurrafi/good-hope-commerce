@@ -33,5 +33,14 @@ export function SimpleCheckbox({ children }) {
     </div>
   );
 }
+export function SimpleTextarea({ placeholder }) {
+  return (
+    <textarea
+      placeholder={placeholder}
+      rows={5}
+      className="simple-textarea"
+    ></textarea>
+  );
+}
 
 export default InputWithButton;
