@@ -1,6 +1,7 @@
 :root {
   --color-primary: #0d779e;
   --notification-color: #db0faf;
+  --color-red: #f20c3f;
 
   --color-secondary: ;
   --text-color: #212529;
@@ -35,4 +36,11 @@ body {
 img {
   height: 100%;
   width: 100%;
+}
+button {
+  border: 1px solid transparent;
+  cursor: pointer;
+  &:focus {
+    outline: none;
+  }
 }

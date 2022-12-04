@@ -30,10 +30,10 @@ const CartDropdown = () => {
           ))}
         </div>
         <div className="cart-dropdown__btns">
-          <ButtonLink to="/" size="small">
+          <ButtonLink to="/checkout" size="small">
             Checkout
           </ButtonLink>
-          <ButtonLink to="/" size="small">
+          <ButtonLink to="/cart" size="small">
             View Cart
           </ButtonLink>
         </div>

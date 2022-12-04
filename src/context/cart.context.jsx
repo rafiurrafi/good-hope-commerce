@@ -35,11 +35,28 @@ export const CartContext = createContext({
 });
 const CartProvider = ({ children }) => {
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([
+    {
+      id: 9,
+      title: "Infinix INBOOK",
+      description: "Infinix Inbook X1 Ci3 10th 8GB...",
+      price: 1099,
+      discountPercentage: 11.83,
+      rating: 4.54,
+      stock: 96,
+      brand: "Infinix",
+      category: "laptops",
+      thumbnail: "https://i.dummyjson.com/data/products/9/thumbnail.jpg",
+      quantity: 1,
+    },
+  ]);
   const [cartCount, setCartCount] = useState(0);
   const [cartTotal, setCartTotal] = useState(0);
   function addCartItem(itemToAdd) {
     setCartItems(addItemToCart(cartItems, itemToAdd));
+  }
+  function removeCartItem(item) {
+    setCartItems(removeItemFromCart(cartItems, item));
   }
   function clearCartItem(item) {
     setCartItems(clearItemFromCart(cartItems, item));
@@ -66,6 +83,7 @@ const CartProvider = ({ children }) => {
     clearCartItem,
     isCartOpen,
     setIsCartOpen,
+    removeCartItem,
   };
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 };

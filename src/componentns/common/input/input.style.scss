@@ -1,0 +1,18 @@
+.input-button {
+  display: flex;
+  & > * {
+    padding: 1rem 0.5rem;
+    font-size: var(--font-base);
+  }
+  input {
+    border: 1px solid var(--gray-text);
+  }
+  button {
+    flex: 1;
+    display: block;
+    min-width: 12rem;
+    background-color: var(--color-primary);
+    color: white;
+    border: 1px solid var(--color-primary);
+  }
+}
