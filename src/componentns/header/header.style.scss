@@ -46,7 +46,8 @@
         color: var(--text-color);
       }
     }
-    button {
+    button,
+    a {
       border: none;
       background-color: transparent;
       cursor: pointer;

@@ -26,17 +26,21 @@ const Home = () => {
           <ProductTimer />
         </Container>
       </section>
-      <div className="product-cards-home">
-        {isLoading ? (
-          <h1>Loading</h1>
-        ) : (
-          products
-            ?.filter((_, id) => id < 4)
-            .map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
-        )}
-      </div>
+      <section>
+        <Container>
+          <div className="product-cards-home">
+            {isLoading ? (
+              <h1>Loading</h1>
+            ) : (
+              products
+                ?.filter((_, id) => id < 4)
+                .map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+            )}
+          </div>
+        </Container>
+      </section>
 
       <BannerFull />
       <div className="home-icons">

@@ -1,14 +1,16 @@
 import { MdCompareArrows } from "react-icons/md";
-import { BsSuitHeart, BsEye } from "react-icons/bs";
+import { BsSuitHeart, BsEye, BsSuitHeartFill } from "react-icons/bs";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { ButtonIcon, H4 } from "../typography/typography.component";
 import "./product-card.style.scss";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
+import { ProductContext } from "../../context/product.context";
 const ProductCard = ({ product }) => {
   const { id, thumbnail, price, title, rating } = product;
   const { cartItems, addCartItem } = useContext(CartContext);
+  const { addWishlist } = useContext(ProductContext);
   function handleAddCart(product) {
     addCartItem(product);
   }
@@ -21,6 +23,7 @@ const ProductCard = ({ product }) => {
           <div>
             <H4>
               <Link to={`/products/${id}`}>{title}</Link>{" "}
+              {product.wishlist && <BsSuitHeartFill />}
             </H4>
             <p>${price}</p>
           </div>
@@ -32,8 +35,12 @@ const ProductCard = ({ product }) => {
           <span onClick={() => handleAddCart(product)}>
             <ButtonIcon icon={<AiOutlineShoppingCart />} />
           </span>
-          <span>
-            <ButtonIcon icon={<BsSuitHeart />} />
+          <span onClick={() => addWishlist(product)}>
+            {product.wishlist ? (
+              <ButtonIcon icon={<BsSuitHeartFill />} />
+            ) : (
+              <ButtonIcon icon={<BsSuitHeart />} />
+            )}
           </span>
           <span>
             <ButtonIcon icon={<MdCompareArrows />} />

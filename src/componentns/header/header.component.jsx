@@ -12,8 +12,8 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 
 export function HeaderTop() {
-  const { cartItems, cartTotal, cartCount } = useContext(CartContext);
-  // console.log(cartItems, cartTotal, cartCount);
+  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+
   return (
     <div className="header-top">
       <Container>
@@ -45,11 +45,14 @@ export function HeaderTop() {
             <option value="">BDT</option>
           </select>
           <div className="header-top__cart-icon">
-            <button href="">
+            <Link to="/wishlist">
               <RiHeartLine />
-            </button>
+            </Link>
           </div>
-          <div className="header-top__cart-icon">
+          <div
+            className="header-top__cart-icon"
+            onClick={() => setIsCartOpen(!isCartOpen)}
+          >
             <button href="">
               <BsCart4 />
             </button>
@@ -58,7 +61,7 @@ export function HeaderTop() {
             )}
           </div>
         </div>
-        <CartDropdown />
+        {isCartOpen && <CartDropdown />}
       </Container>
     </div>
   );
@@ -67,7 +70,9 @@ export function HeaderMain() {
   return (
     <header className="header">
       <Container>
-        <div className="header__logo">Logo</div>
+        <Link to="/" className="header__logo">
+          Logo
+        </Link>
         <ul className="header__menus">
           <li>
             <Link to="/">Home</Link>

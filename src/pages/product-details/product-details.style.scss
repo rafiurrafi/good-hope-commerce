@@ -1,0 +1,13 @@
+.product-des {
+  .container {
+    display: flex;
+    gap: 2rem;
+  }
+  &__img {
+    border: 1px solid orangered;
+    flex: 0 0 30%;
+  }
+  &__content {
+    flex: 1;
+  }
+}

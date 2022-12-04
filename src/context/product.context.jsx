@@ -1,9 +1,17 @@
 import { createContext, useEffect, useState } from "react";
 
+function addToWishlist(products, product) {
+  const existingItem = products.find((item) => item.id === product.id);
+  if (existingItem)
+    return products.map((item) =>
+      item.id === product.id ? { ...item, wishlist: !item.wishlist } : item
+    );
+}
+
 export const ProductContext = createContext({ products: [] });
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     setIsLoading(true);
     fetch("https://dummyjson.com/products")
@@ -12,7 +20,10 @@ const ProductProvider = ({ children }) => {
       .catch((err) => console.error(err))
       .finally(() => setIsLoading(false));
   }, []);
-  const value = { products, isLoading };
+  function addWishlist(product) {
+    setProducts(addToWishlist(products, product));
+  }
+  const value = { products, isLoading, addWishlist };
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );

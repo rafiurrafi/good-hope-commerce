@@ -1,3 +1,3 @@
-export function getProductFromId(id, products) {
-  return products.find((product) => product.id === +id);
+export  function getProductFromId(id, products) {
+  return  products.find((product) => product.id === +id);
 }

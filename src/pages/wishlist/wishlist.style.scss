@@ -1,0 +1,32 @@
+.wishlist-table {
+  &__container {
+    overflow-x: auto;
+  }
+  min-width: 100%;
+
+  td,
+  th {
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--gray-text);
+  }
+  .name {
+    min-width: 35rem;
+    // background-color: red;
+  }
+  .price {
+    min-width: 15rem;
+    // background-color: greenyellow;
+  }
+  .qty {
+    min-width: 15rem;
+    // background-color: yellowgreen;
+  }
+  .status {
+    min-width: 15rem;
+    // background-color: burlywood;
+  }
+  .btn {
+    min-width: 15rem;
+    // background-color: violet;
+  }
+}
