@@ -17,11 +17,22 @@ export function InputWithLabel({
   className,
   placeholder,
   type = "text",
+  name = "",
+  value = "",
+  required = false,
+  onChange = () => null,
 }) {
   return (
     <div className={`input-label ${className}`}>
       <label htmlFor="">{label}</label>
-      <input type={type} placeholder={placeholder} />
+      <input
+        name={name}
+        value={value}
+        onChange={onChange}
+        type={type}
+        required ={required}
+        placeholder={placeholder}
+      />
     </div>
   );
 }

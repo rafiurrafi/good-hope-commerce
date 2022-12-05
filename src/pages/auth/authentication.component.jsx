@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
+import SignIn from "../../componentns/sign-in/sign-in.component";
 import SignUp from "../../componentns/sign-up/sign-up.component";
-import Title from "../../componentns/title/title.component";
 import "./authentication.style.scss";
 const Authentication = () => {
   const { status } = useParams();
@@ -10,7 +10,7 @@ const Authentication = () => {
         {status === "login" ? "Log in" : "Sign Up"}
       </h2>
       <div className="auth__content">
-        <SignUp />
+        {status === "login" ? <SignIn /> : <SignUp />}
       </div>
     </div>
   );

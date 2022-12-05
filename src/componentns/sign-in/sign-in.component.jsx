@@ -3,20 +3,19 @@ import { useNavigate } from "react-router-dom";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
+  signInAuthUserWithEmailAndPassword,
 } from "../../utils/firebase.utils";
 import { InputWithLabel } from "../common/input/input.component";
 import { Button } from "../typography/typography.component";
-import "./sign-up.style.scss";
+import "./sign-in.style.scss";
 const defaultFormFields = {
-  displayName: "",
   email: "",
   password: "",
-  confirmPassword: "",
 };
 
-const SignUp = () => {
+const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
-  const { displayName, email, password, confirmPassword } = formFields;
+  const { email, password } = formFields;
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -27,17 +26,12 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     setIsLoading(true);
-    if (password !== confirmPassword) {
-      alert("passwords do not match");
-      return;
-    }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(
+      const { user } = await signInAuthUserWithEmailAndPassword(
         email,
         password
       );
-      await createUserDocumentFromAuth(user, { displayName });
       resetFormFields();
       setIsLoading(false);
       navigate("/");
@@ -60,14 +54,6 @@ const SignUp = () => {
       <form onSubmit={handleSubmit}>
         <InputWithLabel
           onChange={handleChange}
-          name="displayName"
-          value={displayName}
-          label="Display Name"
-          placeholder="Modon"
-          required={true}
-        />
-        <InputWithLabel
-          onChange={handleChange}
           name="email"
           value={email}
           label="Email"
@@ -83,21 +69,12 @@ const SignUp = () => {
           type="text"
           required={true}
         />
-        <InputWithLabel
-          onChange={handleChange}
-          name="confirmPassword"
-          value={confirmPassword}
-          label="Re-enter Password"
-          placeholder="xxxxxxxx"
-          type="text"
-          required={true}
-        />
         <Button disabled={isLoading}>
-          {isLoading ? <span>Verifying ...</span> : "Sign Up"}
+          {isLoading ? <span>Verifying ...</span> : "Sign In"}
         </Button>
       </form>
     </div>
   );
 };
 
-export default SignUp;
+export default SignIn;

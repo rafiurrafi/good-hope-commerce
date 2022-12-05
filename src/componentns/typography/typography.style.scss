@@ -69,3 +69,37 @@
     }
   }
 }
+.btn {
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--text-color);
+  display: inline-block;
+  padding: 1rem 3rem;
+  border: 1px solid var(--gray-text);
+  transition: 0.4s cubic-bezier(0.47, 0, 0.745, 0.715);
+  font-size: var(--font-base);
+  background-color: transparent;
+  &:focus {
+    outline: none;
+  }
+  &.block {
+    display: block;
+    width: 100%;
+  }
+  .primary {
+    color: white;
+    background-color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+  }
+  .sm {
+    padding: 0.5rem 2rem;
+  }
+  .lg {
+    padding: 2rem 3rem;
+  }
+  &:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+}

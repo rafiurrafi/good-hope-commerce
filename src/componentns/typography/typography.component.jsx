@@ -49,4 +49,12 @@ export function ButtonIcon({ icon }) {
     </button>
   );
 }
+export function Button({ children, type, disabled = false }) {
+  //block, small large medium
+  return (
+    <button disabled={disabled} className={` btn ${type}`}>
+      {children}
+    </button>
+  );
+}
 export default Typograhpy;
