@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useContext } from "react";
 import BannerFull from "../../componentns/banner/banner.component";
 import BlogCard from "../../componentns/blog-card/blog-card.component";
@@ -41,7 +42,6 @@ const Home = () => {
           </div>
         </Container>
       </section>
-
       <BannerFull />
       <div className="home-icons">
         {featuresData.map(({ id, icon, title }) => (

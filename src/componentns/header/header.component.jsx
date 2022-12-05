@@ -18,8 +18,8 @@ export function HeaderTop() {
     <div className="header-top">
       <Container>
         <div className="header-top__login">
-          <a href="">Login</a>
-          <a href="">Register</a>
+          <Link to="/auth/login">Login</Link>
+          <Link to="/auth/register">Register</Link>
         </div>
         <div className="header-top__icons">
           <a href="">
@@ -90,7 +90,7 @@ export function HeaderMain() {
             <Link to="/contact">Contact</Link>
           </li>
           <li>
-            <Link to="/">Blog</Link>
+            <Link to="/shop">Shop</Link>
           </li>
         </ul>
         <Searchbar />

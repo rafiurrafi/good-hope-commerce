@@ -7,6 +7,8 @@ import Wishlist from "./pages/wishlist/wishlist.component";
 import CartPage from "./pages/cart-page/cart-page.component";
 import Checkout from "./pages/checkout/checkout.component";
 import Contact from "./pages/contact/contact.component";
+import Shop from "./pages/shop/shop.component";
+import Authentication from "./pages/auth/authentication.component";
 const App = () => {
   return (
     <div>
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/auth/:status" element={<Authentication />} />
       </Routes>
     </div>
   );

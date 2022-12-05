@@ -17,49 +17,51 @@ const ProductCard = ({ product }) => {
   }
   console.log(cartItems);
   return (
-    <div className="product-card">
-      <div className="product-card__img">
-        <img src={thumbnail} alt="" />
-        <div className="product-card__content">
-          <div>
-            <H4>
-              <Link to={`/products/${id}`}>{title}</Link>{" "}
-              {product.wishlist && <BsSuitHeartFill />}
-            </H4>
-            <p>${price}</p>
+    <>
+      <div className="product-card">
+        <div className="product-card__img">
+          <img src={thumbnail} alt="" />
+          <div className="product-card__content">
+            <div>
+              <H4>
+                <Link to={`/products/${id}`}>{title}</Link>{" "}
+                {product.wishlist && <BsSuitHeartFill />}
+              </H4>
+              <p>${price}</p>
+            </div>
+            <div>
+              {" "}
+              <StarRatings
+                rating={rating}
+                starDimension="10px"
+                starSpacing="2px"
+                starRatedColor="rgb(212,175,55)"
+              />
+            </div>
           </div>
-          <div>
-            {" "}
-            <StarRatings
-              rating={rating}
-              starDimension="10px"
-              starSpacing="2px"
-              starRatedColor="rgb(212,175,55)"
-            />
+        </div>
+        <div className="product-card__overlay">
+          <div className="product-card__icons">
+            <span onClick={() => handleAddCart(product)}>
+              <ButtonIcon icon={<AiOutlineShoppingCart />} />
+            </span>
+            <span onClick={() => addWishlist(product)}>
+              {product.wishlist ? (
+                <ButtonIcon icon={<BsSuitHeartFill />} />
+              ) : (
+                <ButtonIcon icon={<BsSuitHeart />} />
+              )}
+            </span>
+            <span>
+              <ButtonIcon icon={<MdCompareArrows />} />
+            </span>
+            <span>
+              <ButtonIcon icon={<BsEye />} />
+            </span>
           </div>
         </div>
       </div>
-      <div className="product-card__overlay">
-        <div className="product-card__icons">
-          <span onClick={() => handleAddCart(product)}>
-            <ButtonIcon icon={<AiOutlineShoppingCart />} />
-          </span>
-          <span onClick={() => addWishlist(product)}>
-            {product.wishlist ? (
-              <ButtonIcon icon={<BsSuitHeartFill />} />
-            ) : (
-              <ButtonIcon icon={<BsSuitHeart />} />
-            )}
-          </span>
-          <span>
-            <ButtonIcon icon={<MdCompareArrows />} />
-          </span>
-          <span>
-            <ButtonIcon icon={<BsEye />} />
-          </span>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
