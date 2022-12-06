@@ -1,10 +1,8 @@
+import { useContext } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  createAuthUserWithEmailAndPassword,
-  createUserDocumentFromAuth,
-  signInAuthUserWithEmailAndPassword,
-} from "../../utils/firebase.utils";
+import { UserContext } from "../../context/user.context";
+import { signInAuthUserWithEmailAndPassword } from "../../utils/firebase.utils";
 import { InputWithLabel } from "../common/input/input.component";
 import { Button } from "../typography/typography.component";
 import "./sign-in.style.scss";
@@ -17,6 +15,7 @@ const SignIn = () => {
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
   const [isLoading, setIsLoading] = useState(false);
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   const resetFormFields = () => {
@@ -32,6 +31,7 @@ const SignIn = () => {
         email,
         password
       );
+      setUser(user);
       resetFormFields();
       setIsLoading(false);
       navigate("/");

@@ -10,17 +10,33 @@ import Searchbar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
+import { UserContext } from "../../context/user.context";
 
 export function HeaderTop() {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
-
+  const user = true;
+  console.log(user);
   return (
     <div className="header-top">
       <Container>
-        <div className="header-top__login">
-          <Link to="/auth/login">Login</Link>
-          <Link to="/auth/register">Register</Link>
-        </div>
+        {user ? (
+          <div className="header-top__login">
+            <Link to="/auth/login">Login</Link>
+            <Link to="/auth/register">Register</Link>
+          </div>
+        ) : (
+          <div className="header-top__user">
+            <img src="" alt="" />
+            <div>
+              <button>User</button>
+              <div>
+                <button>Profile</button>
+                <button>Sign out</button>
+              </div>
+            </div>
+          </div>
+        )}
+
         <div className="header-top__icons">
           <a href="">
             <FaFacebookF />
