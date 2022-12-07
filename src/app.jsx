@@ -9,6 +9,7 @@ import Checkout from "./pages/checkout/checkout.component";
 import Contact from "./pages/contact/contact.component";
 import Shop from "./pages/shop/shop.component";
 import Authentication from "./pages/auth/authentication.component";
+import SearchPage from "./pages/search-page/search-page.component";
 const App = () => {
   return (
     <div>
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/search" element={<SearchPage />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/auth/:status" element={<Authentication />} />
       </Routes>

@@ -1,54 +1,20 @@
-import { useReducer, useState } from "react";
+import { useContext } from "react";
+import { SEARCH_ACTIONS } from "../../context/search.context";
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { SearchContext } from "../../context/search.context";
 import Loading from "../common/loading/loading.component";
 import { ButtonLink } from "../typography/typography.component";
 import "./searchbar.style.scss";
-const initialValue = {
-  searchQuery: "",
-  searchResult: [],
-  isLoading: false,
-  showAuto: false,
-};
-const SEARCH_ACTIONS = {
-  IS_LOADING: "IS_LOADING",
-  IS_FETCHING: "IS_FETCHING",
-  FETCH_SUCCESS: "FETCH_SUCCESS",
-  TOGGLE_SHOW_AUTO: "TOOGLE_SHOW_AUTO",
-  SET_SEARCH_QUERY: "SET_SEARCH_QUERY",
-};
-function searchReducer(state, action) {
-  const { type, payload } = action;
-  switch (type) {
-    case SEARCH_ACTIONS.IS_LOADING:
-      return { ...state, isLoading: payload };
-    case SEARCH_ACTIONS.IS_FETCHING:
-      return { ...state, isLoading: true, showAuto: true };
-    case SEARCH_ACTIONS.FETCH_SUCCESS:
-      return { ...state, isLoading: false, searchResult: payload };
-    case SEARCH_ACTIONS.TOGGLE_SHOW_AUTO:
-      return { ...state, showAuto: payload };
-    case SEARCH_ACTIONS.SET_SEARCH_QUERY:
-      return { ...state, searchQuery: payload };
-
-    default:
-      throw new Error(`Unhandled action type ${type}`);
-  }
-}
 
 const Searchbar = () => {
-  // const [searchQuery, setSearchQuery] = useState("");
-  // const [searchResult, setSearchResult] = useState([]);
-  // const [isLoading, setIsLoading] = useState();
-  // const [showAuto, setShowAuto] = useState(false);
-  const [state, dispatch] = useReducer(searchReducer, initialValue);
-  const { searchQuery, searchResult, isLoading, showAuto } = state;
+  const { searchQuery, searchResult, isLoading, showAuto, dispatch } =
+    useContext(SearchContext);
 
   function handleSubmit(e) {
     e.preventDefault();
     console.log("Submitted");
   }
-  console.log(state);
   function handleChange(e) {
     const { value } = e.target;
     dispatch({ type: SEARCH_ACTIONS.SET_SEARCH_QUERY, payload: value });
@@ -61,6 +27,7 @@ const Searchbar = () => {
         });
     } else dispatch({ type: SEARCH_ACTIONS.TOGGLE_SHOW_AUTO, payload: false });
   }
+
   function renderData() {
     if (searchResult.length > 0)
       return (

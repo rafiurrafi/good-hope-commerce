@@ -24,7 +24,7 @@ import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
 const ProductCard = ({ product }) => {
   const { id, thumbnail, price, title, rating } = product;
-  const { cartItems, addCartItem } = useContext(CartContext);
+  const { addCartItem } = useContext(CartContext);
   const { addWishlist } = useContext(ProductContext);
   const [modal, setModal] = useState(false);
   function handleAddCart(product) {
