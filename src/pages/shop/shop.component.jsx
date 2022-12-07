@@ -14,32 +14,17 @@ const pageSize = 9;
 const Shop = () => {
   const { products, isLoading } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [categories, setCategories] = useState([]);
-  const [category, setCategory] = useState("");
-  const [filteredByCategory, setFilteredByCategory] = useState([]);
-  console.log(filteredByCategory);
-  console.log(category);
-  useEffect(() => {
-    fetch(`https://dummyjson.com/products/categories`)
-      .then((res) => res.json())
-      .then((categories) => setCategories(categories));
-  }, []);
-  useEffect(() => {
-    fetch("https://dummyjson.com/products/category/" + category)
-      .then((res) => res.json())
-      .then((data) => setFilteredByCategory(data.products));
-  }, [category]);
+  //  filters : [100, 200, 400]
+  //  products : [
+  //   {id : 1, price : 100}
+  //   {id : 1, price : 200}
+  //   {id : 1, price : 300}
+  //   {id : 1, price : 400}
+  //  ]
   function handlePageChange(page) {
     setCurrentPage(page);
   }
-  // const filteredByCategory = category
-  //   ? products.filter((product) => product.category === category)
-  //   : products;
-  const paginatedProducts = paginate(
-    filteredByCategory || products,
-    currentPage,
-    pageSize
-  );
+  const paginatedProducts = paginate(products, currentPage, pageSize);
   return (
     <div className="shop">
       <Title title="Shop" route="Home - Shop Page" />
@@ -47,16 +32,7 @@ const Shop = () => {
         <div className="shop__filter">
           <div className="shop__filter-cat">
             <H4>Filter by Category</H4>
-            <div>
-              <select onChange={(e) => setCategory(e.target.value)} id="">
-                <option value="">Select Category</option>
-                {categories?.map((cat) => (
-                  <option key={cat} value={cat}>
-                    {cat}
-                  </option>
-                ))}
-              </select>
-            </div>
+            <div></div>
           </div>
           <div className="shop__filter-cat">
             <H4>Filter by Price</H4>

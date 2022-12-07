@@ -41,3 +41,47 @@
     }
   }
 }
+// modal
+.modal {
+  &__content {
+    display: flex;
+    gap: 3.5rem;
+    .modal-icons {
+      margin-top: 1rem;
+      span {
+        display: inline-block;
+        margin-right: 1.5rem;
+      }
+    }
+  }
+  &__img {
+    flex: 0 0 50%;
+    img {
+      width: 100%;
+    }
+  }
+  &__text {
+    flex: 1;
+  }
+  &__price {
+    display: inline-block;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-top: 3px solid var(--color-primary);
+    border-bottom: 3px solid var(--color-primary);
+    font-weight: 700;
+  }
+}
+
+.pure-modal-backgrop .pure-modal {
+  width: 70vw !important;
+  height: 50vh;
+}
+.panel {
+  .close {
+    background-color: transparent !important;
+    .btn-icon {
+      border: none !important;
+    }
+  }
+}
