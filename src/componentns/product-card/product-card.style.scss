@@ -1,6 +1,6 @@
 .product-card {
   position: relative;
-
+  box-shadow: 0 5px 1rem rgba($color: #000000, $alpha: 0.09);
   &__img {
     height: 70%;
     img {

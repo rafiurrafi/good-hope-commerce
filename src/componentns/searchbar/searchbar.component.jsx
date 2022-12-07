@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { SEARCH_ACTIONS } from "../../context/search.context";
 import { FaSearch } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/search.context";
 import Loading from "../common/loading/loading.component";
 import { ButtonLink } from "../typography/typography.component";
@@ -10,6 +10,7 @@ import "./searchbar.style.scss";
 const Searchbar = () => {
   const { searchQuery, searchResult, isLoading, showAuto, dispatch } =
     useContext(SearchContext);
+  const navigate = useNavigate();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +41,10 @@ const Searchbar = () => {
                 {title}
               </Link>
             ))}
-          <ButtonLink>Get All Result</ButtonLink>
+          <span onClick={() => navigate("/search")}>
+            {" "}
+            <ButtonLink>Get All Result</ButtonLink>
+          </span>
         </div>
       );
     else return <h3>No result found</h3>;
