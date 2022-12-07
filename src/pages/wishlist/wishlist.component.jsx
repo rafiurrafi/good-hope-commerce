@@ -3,17 +3,14 @@ import { ProductContext } from "../../context/product.context";
 import Container from "../../componentns/common/Container/container.component";
 import "./wishlist.style.scss";
 import { ButtonLink } from "../../componentns/typography/typography.component";
-import { useEffect } from "react";
+
 const Wishlist = () => {
   const { products, isLoading } = useContext(ProductContext);
   function getWishlist() {
     return products.filter((product) => product.wishlist);
   }
-  let wishlists = [];
-  useEffect(() => {
-    wishlists = getWishlist();
-    console.log("wishlist rendered", wishlists, "isloading", isLoading);
-  }, [products]);
+  const wishlists = getWishlist() || [];
+
   return (
     <div>
       <Container>
@@ -24,24 +21,24 @@ const Wishlist = () => {
             <table className="wishlist-table">
               <thead>
                 <tr>
-                  <th class="name">Name</th>
-                  <th class="price">Price</th>
-                  <th class="qty">Qty</th>
-                  <th class="status">Status</th>
-                  <th class="btn"></th>
+                  <th className="name">Name</th>
+                  <th className="price">Price</th>
+                  <th className="qty">Qty</th>
+                  <th className="status">Status</th>
+                  <th className="action"></th>
                 </tr>
               </thead>
               <tbody>
-                {wishlists.map((item) => (
-                  <tr key={item.id}>
-                    <td class="name">
-                      <img src={item.thumbnail} alt="" />
-                      <p>{item.name}</p>
+                {wishlists.map(({ id, title, thumbnail, price }) => (
+                  <tr key={id}>
+                    <td className="name">
+                      <img src={thumbnail} alt="" />
+                      <p>{title}</p>
                     </td>
-                    <td class="price"></td>
-                    <td class="qty"></td>
-                    <td class="status"></td>
-                    <td class="btn">
+                    <td className="price">{price}</td>
+                    <td className="qty"></td>
+                    <td className="status"></td>
+                    <td className="action">
                       <ButtonLink type="sm">Add to cart</ButtonLink>
                     </td>
                   </tr>

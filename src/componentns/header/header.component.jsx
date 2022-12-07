@@ -11,15 +11,19 @@ import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import { UserContext } from "../../context/user.context";
+import { signUserOut } from "../../utils/firebase.utils";
 
 export function HeaderTop() {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
-  const user = true;
-  console.log(user);
+  const { user, setUser } = useContext(UserContext);
+  async function handleSignOut() {
+    await signUserOut();
+    setUser(null);
+  }
   return (
     <div className="header-top">
       <Container>
-        {user ? (
+        {!user ? (
           <div className="header-top__login">
             <Link to="/auth/login">Login</Link>
             <Link to="/auth/register">Register</Link>
@@ -31,7 +35,7 @@ export function HeaderTop() {
               <button>User</button>
               <div>
                 <button>Profile</button>
-                <button>Sign out</button>
+                <button onClick={handleSignOut}>Sign out</button>
               </div>
             </div>
           </div>

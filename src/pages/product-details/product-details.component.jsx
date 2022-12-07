@@ -7,10 +7,8 @@ import { H4 } from "../../componentns/typography/typography.component";
 const ProductDetails = () => {
   const { id } = useParams();
   let { products, isLoading } = useContext(ProductContext);
-  let product = {};
-  useEffect(() => {
-    product = getProductFromId(id, products);
-  }, [products, isLoading]);
+  let product = getProductFromId(id, products);
+
   console.log(products, product);
 
   //problem when direct goto /products/:id because of not loading products

@@ -15,7 +15,6 @@ const ProductCard = ({ product }) => {
   function handleAddCart(product) {
     addCartItem(product);
   }
-  console.log(cartItems);
   return (
     <>
       <div className="product-card">

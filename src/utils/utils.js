@@ -1,3 +1,8 @@
-export  function getProductFromId(id, products) {
-  return  products.find((product) => product.id === +id);
+import _ from "lodash";
+export function getProductFromId(id, products) {
+  return products.find((product) => product.id === +id);
+}
+export function paginate(items, pageNumber, pageSize) {
+  const startIndex = (pageNumber - 1) * pageSize;
+  return _(items).slice(startIndex).take(pageSize).value();
 }
