@@ -53,11 +53,11 @@ const Hero = () => {
         <div className="hero__single hero__single--3">
           <img src={slider3} alt="" />
           <Container>
-            <BigHeading>
+            <BigHeading color="black">
               <span>Discover</span> Your Exciting <br /> Journey With{" "}
               <span>US</span>
             </BigHeading>
-            <SubHeading style={{ margin: "1.5rem 0" }}>
+            <SubHeading style={{ margin: "1.5rem 0" }} color="black">
               Unleash your fear, Free your Mind, Feel your body
             </SubHeading>
             <Button>Get Started</Button>

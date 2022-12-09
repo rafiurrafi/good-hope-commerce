@@ -22,7 +22,23 @@ import { useState } from "react";
 // react pure modal
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
+// react toastify
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
+function notify() {
+  toast("🦄 Wow so easy!", {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
+// toast.configure();
 const ProductCard = ({ product }) => {
   const { id, thumbnail, price, title, rating } = product;
   const { addCartItem } = useContext(CartContext);
@@ -34,6 +50,8 @@ const ProductCard = ({ product }) => {
   return (
     <>
       <div className="product-card">
+        <ToastContainer />
+
         <div className="product-card__img">
           <img src={thumbnail} alt="" />
           <div className="product-card__content">
@@ -64,7 +82,10 @@ const ProductCard = ({ product }) => {
             >
               <ButtonIcon icon={<AiOutlineShoppingCart />} />
             </span>
-            <span onClick={() => addWishlist(product)}>
+            <span
+              // onClick={() => addWishlist(product)}
+              onClick={notify}
+            >
               {product.wishlist ? (
                 <ButtonIcon icon={<BsSuitHeartFill />} />
               ) : (
@@ -80,6 +101,7 @@ const ProductCard = ({ product }) => {
           </div>
         </div>
       </div>
+
       <PureModal
         width="70vw"
         isOpen={modal}
