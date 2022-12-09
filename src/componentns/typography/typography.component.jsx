@@ -3,6 +3,13 @@ import "./typography.style.scss";
 const Typograhpy = () => {
   return <div></div>;
 };
+export function BigHeading({ children, color = "white", style }) {
+  return (
+    <h1 className="big-heading" style={{ color, ...style }}>
+      {children}
+    </h1>
+  );
+}
 export const H1 = ({ children, color = "white", style }) => {
   return (
     <h1 className="heading-primary" style={{ color, ...style }}>
@@ -13,10 +20,12 @@ export const H1 = ({ children, color = "white", style }) => {
 export function H4({ children }) {
   return <h4 className="heading-tetra">{children}</h4>;
 }
-export function SubHeading({ children, color = "white" }) {
-  <span className="sub-heading" style={{ color }}>
-    {children}
-  </span>;
+export function SubHeading({ children, color = "white", style = {} }) {
+  return (
+    <span className="sub-heading" style={{ color, ...style }}>
+      {children}
+    </span>
+  );
 }
 export function ButtonLink({ children, to = "/", size = "" }) {
   return (

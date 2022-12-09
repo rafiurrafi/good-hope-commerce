@@ -1,5 +1,12 @@
 .heading-primary {
 }
+.big-heading {
+  font-size: var(--font-size-1);
+  color: white;
+  span {
+    color: var(--color-primary);
+  }
+}
 .sub-heading {
   font-size: var(--font-size-4);
   display: block;

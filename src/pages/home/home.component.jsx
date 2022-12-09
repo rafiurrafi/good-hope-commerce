@@ -9,6 +9,7 @@ import ProductTimer from "../../componentns/product-timer/product-timer.componen
 import SingleFashion from "../../componentns/single-fashion/single-fashion.component";
 import Hero from "../../componentns/sliderr/hero.component";
 import Testimonial from "../../componentns/testimonial/testimonial.component";
+import { BigHeading } from "../../componentns/typography/typography.component";
 import { ProductContext } from "../../context/product.context";
 import { featuresData, testimonialData } from "../../utils/data";
 import "./home.style.scss";
@@ -16,9 +17,15 @@ const Home = () => {
   const { products, isLoading } = useContext(ProductContext);
   return (
     <div>
-      {/* <Hero /> */}
+      <Hero />
       {/* <Container></Container> */}
       <section className="section-home-collection">
+        <BigHeading
+          color="black"
+          style={{ textAlign: "center", marginBottom: "4.5rem" }}
+        >
+          Why you choose <span>Us</span>
+        </BigHeading>
         <Container>
           <div className="home-collections">
             <SingleFashion />
@@ -27,7 +34,13 @@ const Home = () => {
           <ProductTimer />
         </Container>
       </section>
-      <section>
+      <section style={{ margin: "6rem 0" }}>
+        <BigHeading
+          color="black"
+          style={{ textAlign: "center", marginBottom: "4.5rem" }}
+        >
+          Our <span>Latest</span> Collection
+        </BigHeading>
         <Container>
           <div className="product-cards-home">
             {isLoading ? (

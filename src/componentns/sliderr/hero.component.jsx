@@ -1,40 +1,67 @@
+// import "slick-carousel/slick/slick.css";
+import slider1 from "./img/banner-1.jpg";
+import slider2 from "./img/banner-2.jpg";
+import slider3 from "./img/banner-3.jpg";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
-import { SubHeading } from "../typography/typography.component";
-import slider1 from "./img/slider-1.jpg";
-import slider2 from "./img/slider-2.jpg";
 import "./hero.style.scss";
+import Container from "../common/Container/container.component";
+import {
+  BigHeading,
+  Button,
+  SubHeading,
+} from "../typography/typography.component";
 const Hero = () => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
+    arrows: false,
   };
   return (
     <div className="hero">
       <Slider {...settings}>
-        <div className="hero__single">
-          <img src={slider1} className="hero__img" alt="" />
-          <div className="hero__text">
-            <SubHeading color="black">Best Collection</SubHeading>
-          </div>
+        <div className="hero__single hero__single--1">
+          <img src={slider1} alt="" />
+          <Container>
+            <BigHeading>
+              <span>Discover</span> Your Exciting <br /> Journey With{" "}
+              <span>US</span>
+            </BigHeading>
+            <SubHeading style={{ margin: "1.5rem 0" }}>
+              Unleash your fear, Free your Mind, Feel your body
+            </SubHeading>
+            <Button>Get Started</Button>
+          </Container>
         </div>
-        <div>
-          <h3>2</h3>
+        <div className="hero__single hero__single--2">
+          <img src={slider2} alt="" />
+          <Container>
+            <BigHeading>
+              <span>Discover</span> Your Exciting <br /> Journey With{" "}
+              <span>US</span>
+            </BigHeading>
+            <SubHeading style={{ margin: "1.5rem 0" }}>
+              Unleash your fear, Free your Mind, Feel your body
+            </SubHeading>
+            <Button>Get Started</Button>
+          </Container>
         </div>
-        <div>
-          <h3>3</h3>
-        </div>
-        <div>
-          <h3>4</h3>
-        </div>
-        <div>
-          <h3>5</h3>
-        </div>
-        <div>
-          <h3>6</h3>
+        <div className="hero__single hero__single--3">
+          <img src={slider3} alt="" />
+          <Container>
+            <BigHeading>
+              <span>Discover</span> Your Exciting <br /> Journey With{" "}
+              <span>US</span>
+            </BigHeading>
+            <SubHeading style={{ margin: "1.5rem 0" }}>
+              Unleash your fear, Free your Mind, Feel your body
+            </SubHeading>
+            <Button>Get Started</Button>
+          </Container>
         </div>
       </Slider>
     </div>

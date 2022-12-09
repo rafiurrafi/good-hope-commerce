@@ -22,6 +22,7 @@ import { useState } from "react";
 // react pure modal
 import PureModal from "react-pure-modal";
 import "react-pure-modal/dist/react-pure-modal.min.css";
+
 const ProductCard = ({ product }) => {
   const { id, thumbnail, price, title, rating } = product;
   const { addCartItem } = useContext(CartContext);
@@ -56,7 +57,11 @@ const ProductCard = ({ product }) => {
         </div>
         <div className="product-card__overlay">
           <div className="product-card__icons">
-            <span onClick={() => handleAddCart(product)}>
+            <span
+              onClick={() => {
+                handleAddCart(product);
+              }}
+            >
               <ButtonIcon icon={<AiOutlineShoppingCart />} />
             </span>
             <span onClick={() => addWishlist(product)}>
