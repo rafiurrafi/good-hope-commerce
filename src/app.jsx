@@ -10,6 +10,7 @@ import Contact from "./pages/contact/contact.component";
 import Shop from "./pages/shop/shop.component";
 import Authentication from "./pages/auth/authentication.component";
 import SearchPage from "./pages/search-page/search-page.component";
+import SpecificShop from "./pages/specific-shop/specific-shop.component";
 const App = () => {
   return (
     <div>
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/shop" element={<Shop />} />
+        <Route path="/shop/:cat" element={<SpecificShop />} />
         <Route path="/auth/:status" element={<Authentication />} />
       </Routes>
     </div>

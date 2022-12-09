@@ -98,10 +98,10 @@ export function HeaderMain() {
             <Link to="/">Home</Link>
           </li>
           <li>
-            <Link to="/">Men</Link>
+            <Link to="/shop/mens-shirts">Men</Link>
           </li>
           <li>
-            <Link to="/">Women</Link>
+            <Link to="/shop/womens-jewellery">Women</Link>
           </li>
           <li>
             <Link to="/">About</Link>
