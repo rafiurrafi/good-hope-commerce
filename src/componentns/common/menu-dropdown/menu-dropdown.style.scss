@@ -1,0 +1,45 @@
+.menu-dropdown {
+  position: relative;
+  &__btn {
+    padding: 1rem 0;
+    background-color: transparent;
+  }
+  &:hover &__content {
+    display: block;
+  }
+  &__content {
+    background-color: white;
+    position: absolute;
+    top: 3.5rem;
+    left: -20rem;
+    display: none;
+    height: 25rem;
+    width: 50rem;
+    z-index: 2;
+    box-shadow: 0 0rem 1rem rgba($color: #000000, $alpha: 0.09);
+
+    & > div {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 2rem;
+    }
+  }
+  &__left {
+    padding: 3rem 0 0 3rem;
+    a {
+      margin-bottom: 2rem;
+      display: block;
+      &::after {
+        margin-left: 0 !important;
+      }
+    }
+  }
+
+  &__right {
+    align-items: center;
+    img {
+      max-height: 25rem;
+      object-fit: cover;
+    }
+  }
+}

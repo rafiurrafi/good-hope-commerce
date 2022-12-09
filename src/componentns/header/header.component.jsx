@@ -12,6 +12,7 @@ import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
 import { UserContext } from "../../context/user.context";
 import { signUserOut } from "../../utils/firebase.utils";
+import MenuDropdown from "../common/menu-dropdown/menu-dropdown.component";
 
 export function HeaderTop() {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
@@ -95,22 +96,32 @@ export function HeaderMain() {
         </Link>
         <ul className="header__menus">
           <li>
-            <Link to="/">Home</Link>
+            <Link className="header-menu__links" to="/">
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/shop/mens-shirts">Men</Link>
+            <Link className="header-menu__links" to="/shop/mens-shirts">
+              Men
+            </Link>
           </li>
           <li>
-            <Link to="/shop/womens-jewellery">Women</Link>
+            <Link className="header-menu__links" to="/shop/womens-jewellery">
+              Women
+            </Link>
           </li>
           <li>
-            <Link to="/">About</Link>
+            <MenuDropdown />
           </li>
           <li>
-            <Link to="/contact">Contact</Link>
+            <Link className="header-menu__links" to="/contact">
+              Contact
+            </Link>
           </li>
           <li>
-            <Link to="/shop">Shop</Link>
+            <Link className="header-menu__links" to="/shop">
+              Shop
+            </Link>
           </li>
         </ul>
         <Searchbar />
