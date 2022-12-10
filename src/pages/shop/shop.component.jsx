@@ -15,12 +15,16 @@ import {
   priceFilterService,
   ratingFilterService,
 } from "../../utils/filterService";
+
 const pageSize = 9;
+
 const Shop = () => {
   const { products, isLoading } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
   const [priceFilter, setPriceFilter] = useState([]);
   const [ratingFilter, setRatingFilter] = useState([]);
+  const [brand, setBrand] = useState("");
+
   function handlePageChange(page) {
     setCurrentPage(page);
   }
@@ -30,6 +34,9 @@ const Shop = () => {
   const handleRatingFilter = (filter) => {
     setRatingFilter(filter);
   };
+  const handleBrand = (brand) => {
+    setBrand(brand);
+  };
 
   const filterByPrice = priceFilter.length
     ? products.filter((product) =>
@@ -38,13 +45,18 @@ const Shop = () => {
         )
       )
     : products;
+  const filterByBrand = brand
+    ? filterByPrice.filter((product) => product.brand === brand)
+    : filterByPrice;
+
   const filterByRating = ratingFilter.length
-    ? filterByPrice.filter((product) =>
+    ? filterByBrand.filter((product) =>
         ratingFilter.some(
           (rating) => product.rating < rating && product.rating > rating - 1
         )
       )
-    : filterByPrice;
+    : filterByBrand;
+
   const paginatedProducts = paginate(filterByRating, currentPage, pageSize);
 
   return (
@@ -69,6 +81,21 @@ const Shop = () => {
                 data={ratingFilterService}
                 title="Filter By Ratings"
               />
+            </div>
+          </div>
+          <div className="shop__filter-cat">
+            <div>
+              <select
+                name=""
+                id=""
+                value={brand}
+                onChange={(e) => handleBrand(e.target.value)}
+              >
+                <option value="">Select Brand</option>
+                {products.map((product) => (
+                  <option value={product.brand}>{product.brand}</option>
+                ))}
+              </select>
             </div>
           </div>
         </div>
