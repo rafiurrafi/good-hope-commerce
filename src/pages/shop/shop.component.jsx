@@ -10,21 +10,28 @@ import Pagination from "../../componentns/common/pagination/pagination.component
 import { useState } from "react";
 import { paginate } from "../../utils/utils";
 import { useEffect } from "react";
+import Filter from "../../componentns/common/filter/filter.component";
 const pageSize = 9;
 const Shop = () => {
   const { products, isLoading } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
-  //  filters : [100, 200, 400]
-  //  products : [
-  //   {id : 1, price : 100}
-  //   {id : 1, price : 200}
-  //   {id : 1, price : 300}
-  //   {id : 1, price : 400}
-  //  ]
+  const [categoryFilter, setCategoryFilter] = useState([]);
   function handlePageChange(page) {
     setCurrentPage(page);
   }
-  const paginatedProducts = paginate(products, currentPage, pageSize);
+  const handleFilter = (filter) => {
+    setCategoryFilter(filter);
+  };
+
+  const filteredProducts = categoryFilter.length
+    ? products.filter((product) =>
+        categoryFilter.some(
+          (price) => product.price < price && product.price > price - 299
+        )
+      )
+    : products;
+  const paginatedProducts = paginate(filteredProducts, currentPage, pageSize);
+
   return (
     <div className="shop">
       <Title title="Shop" route="Home - Shop Page" />
@@ -35,14 +42,7 @@ const Shop = () => {
             <div></div>
           </div>
           <div className="shop__filter-cat">
-            <H4>Filter by Price</H4>
-            <div>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-            </div>
+            <Filter onFilter={handleFilter} />
           </div>
           <div className="shop__filter-cat">
             <H4>Filter by Price</H4>
@@ -66,7 +66,7 @@ const Shop = () => {
                 ))}
               </div>
               <Pagination
-                itemsCount={products?.length}
+                itemsCount={filteredProducts?.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
