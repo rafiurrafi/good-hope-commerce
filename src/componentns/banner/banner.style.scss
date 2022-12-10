@@ -2,9 +2,16 @@
   height: 50vh;
   background-size: cover;
   background-position: center;
-  .container{
-    height : 50vh;
+  .container {
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
   }
-  display: flex;
-  align-items: center;
+  &__discount {
+    font-size: var(--font-size-3);
+    font-weight: 700;
+    margin: 1rem 0;
+  }
 }

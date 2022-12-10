@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { useContext } from "react";
+import Slider from "react-slick";
 import BannerFull from "../../componentns/banner/banner.component";
 import BlogCard from "../../componentns/blog-card/blog-card.component";
 import Container from "../../componentns/common/Container/container.component";
@@ -12,9 +12,20 @@ import Testimonial from "../../componentns/testimonial/testimonial.component";
 import { BigHeading } from "../../componentns/typography/typography.component";
 import { ProductContext } from "../../context/product.context";
 import { featuresData, testimonialData } from "../../utils/data";
+import coverImage from "./cover-1.jpeg";
 import "./home.style.scss";
 const Home = () => {
   const { products, isLoading } = useContext(ProductContext);
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    arrows: false,
+    appendDots: (dots) => <ul>{dots}</ul>,
+  };
   return (
     <div>
       <Hero />
@@ -61,10 +72,19 @@ const Home = () => {
           <IconCard key={id} icon={icon} text={title} />
         ))}
       </div>
-      <section className="home-testimonial">
-        {testimonialData.map((testimonial) => (
-          <Testimonial key={testimonial.id} testimonial={testimonial} />
-        ))}
+      <section
+        className="home-testimonial"
+        style={{
+          backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.75)), url(${coverImage})`,
+        }}
+      >
+        <div>
+          <Slider {...settings}>
+            {testimonialData.map((testimonial) => (
+              <Testimonial key={testimonial.id} testimonial={testimonial} />
+            ))}
+          </Slider>
+        </div>
       </section>
       <section className="home-blog">
         <BlogCard />

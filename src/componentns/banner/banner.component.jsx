@@ -15,9 +15,11 @@ const BannerFull = () => {
     >
       <div className="banner-full__content">
         <Container>
-          <SubHeading>Full Design</SubHeading>
-          <H1>MEN&amp;s FASHION DESTINATION</H1>
-          <p>15% Discount</p>
+          <SubHeading color="black">Full Design</SubHeading>
+          <H1 color="black" style={{ fontWeight: 400 }}>
+            MEN&amp;s FASHION DESTINATION
+          </H1>
+          <p className="banner-full__discount">15% Discount</p>
           <ButtonLink>Shop now</ButtonLink>
         </Container>
       </div>
