@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { priceFilterService } from "./filterService";
-const Filter = ({ onFilter }) => {
+
+const Filter = ({ title = "", data = [], onFilter = () => false }) => {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const handleChange = (name) => {
     const filters = [...categoryFilter];
@@ -11,8 +11,8 @@ const Filter = ({ onFilter }) => {
   };
   return (
     <div className="filter my-4">
-      <h4 className="mb-3">Category</h4>
-      {priceFilterService.map(({ id, name, value }) => (
+      <h4 className="mb-3">{title}</h4>
+      {data.map(({ id, name, value }) => (
         <div key={id} className="form-check">
           <input
             className="form-check-input"

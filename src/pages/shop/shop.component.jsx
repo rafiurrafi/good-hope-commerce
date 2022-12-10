@@ -11,26 +11,42 @@ import { useState } from "react";
 import { paginate } from "../../utils/utils";
 import { useEffect } from "react";
 import Filter from "../../componentns/common/filter/filter.component";
+import { priceFilterService } from "../../utils/filterService";
 const pageSize = 9;
 const Shop = () => {
   const { products, isLoading } = useContext(ProductContext);
   const [currentPage, setCurrentPage] = useState(1);
-  const [categoryFilter, setCategoryFilter] = useState([]);
+  const [priceFilter, setPriceFilter] = useState([]);
+  const [ratingFilter, setRatingFilter] = useState([]);
   function handlePageChange(page) {
     setCurrentPage(page);
   }
-  const handleFilter = (filter) => {
-    setCategoryFilter(filter);
+  const handlePriceFilter = (filter) => {
+    setPriceFilter(filter);
+  };
+  const handleRatingFilter = (filter) => {
+    setRatingFilter(filter);
   };
 
-  const filteredProducts = categoryFilter.length
+  const filteredProductsByPrice = priceFilter.length
     ? products.filter((product) =>
-        categoryFilter.some(
+        priceFilter.some(
           (price) => product.price < price && product.price > price - 299
         )
       )
     : products;
-  const paginatedProducts = paginate(filteredProducts, currentPage, pageSize);
+  // const filteredProductsByRating = ratingFilter.length
+  //   ? products.filter((product) =>
+  //       ratingFilter.some(
+  //         (rating) => product.rating < rating && product.rating > rating - 1
+  //       )
+  //     )
+  //   : products;
+  const paginatedProducts = paginate(
+    filteredProductsByPrice,
+    currentPage,
+    pageSize
+  );
 
   return (
     <div className="shop">
@@ -42,7 +58,7 @@ const Shop = () => {
             <div></div>
           </div>
           <div className="shop__filter-cat">
-            <Filter onFilter={handleFilter} />
+            <Filter onFilter={handlePriceFilter} data={priceFilterService} />
           </div>
           <div className="shop__filter-cat">
             <H4>Filter by Price</H4>
@@ -61,12 +77,16 @@ const Shop = () => {
           ) : (
             <>
               <div className="shop__items-container">
-                {paginatedProducts.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+                {paginatedProducts.length ? (
+                  paginatedProducts.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))
+                ) : (
+                  <h1>Boss you have no product to show</h1>
+                )}
               </div>
               <Pagination
-                itemsCount={filteredProducts?.length}
+                itemsCount={filteredProductsByPrice?.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}
