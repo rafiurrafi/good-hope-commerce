@@ -1,5 +1,6 @@
 import {
   ButtonLink,
+  H1,
   SmallText,
   SubHeading,
 } from "../typography/typography.component";
@@ -15,6 +16,8 @@ const BannerFull = () => {
       <div className="banner-full__content">
         <Container>
           <SubHeading>Full Design</SubHeading>
+          <H1>MEN&amp;s FASHION DESTINATION</H1>
+          <p>15% Discount</p>
           <ButtonLink>Shop now</ButtonLink>
         </Container>
       </div>

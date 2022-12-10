@@ -26,10 +26,10 @@ import "react-pure-modal/dist/react-pure-modal.min.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-function notify() {
-  toast("🦄 Wow so easy!", {
+function notify(msg) {
+  toast(msg, {
     position: "top-right",
-    autoClose: 5000,
+    autoClose: 1000,
     hideProgressBar: false,
     closeOnClick: true,
     pauseOnHover: true,
@@ -78,13 +78,18 @@ const ProductCard = ({ product }) => {
             <span
               onClick={() => {
                 handleAddCart(product);
+                notify("Added to cart");
               }}
             >
               <ButtonIcon icon={<AiOutlineShoppingCart />} />
             </span>
             <span
-              // onClick={() => addWishlist(product)}
-              onClick={notify}
+              onClick={() => {
+                addWishlist(product);
+                product.wishlist
+                  ? notify("Removed from wishlist")
+                  : notify("Added to wishlist");
+              }}
             >
               {product.wishlist ? (
                 <ButtonIcon icon={<BsSuitHeartFill />} />

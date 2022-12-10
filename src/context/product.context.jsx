@@ -6,12 +6,14 @@ function addToWishlist(products, product) {
     return products.map((item) =>
       item.id === product.id ? { ...item, wishlist: !item.wishlist } : item
     );
+  return [...products, { ...product, wishlist: true }];
 }
 
 export const ProductContext = createContext({ products: [] });
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  console.log(products);
   useEffect(() => {
     setIsLoading(true);
     fetch("https://dummyjson.com/products")
