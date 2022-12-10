@@ -11,7 +11,10 @@ import { useState } from "react";
 import { paginate } from "../../utils/utils";
 import { useEffect } from "react";
 import Filter from "../../componentns/common/filter/filter.component";
-import { priceFilterService } from "../../utils/filterService";
+import {
+  priceFilterService,
+  ratingFilterService,
+} from "../../utils/filterService";
 const pageSize = 9;
 const Shop = () => {
   const { products, isLoading } = useContext(ProductContext);
@@ -28,25 +31,21 @@ const Shop = () => {
     setRatingFilter(filter);
   };
 
-  const filteredProductsByPrice = priceFilter.length
+  const filterByPrice = priceFilter.length
     ? products.filter((product) =>
         priceFilter.some(
           (price) => product.price < price && product.price > price - 299
         )
       )
     : products;
-  // const filteredProductsByRating = ratingFilter.length
-  //   ? products.filter((product) =>
-  //       ratingFilter.some(
-  //         (rating) => product.rating < rating && product.rating > rating - 1
-  //       )
-  //     )
-  //   : products;
-  const paginatedProducts = paginate(
-    filteredProductsByPrice,
-    currentPage,
-    pageSize
-  );
+  const filterByRating = ratingFilter.length
+    ? filterByPrice.filter((product) =>
+        ratingFilter.some(
+          (rating) => product.rating < rating && product.rating > rating - 1
+        )
+      )
+    : filterByPrice;
+  const paginatedProducts = paginate(filterByRating, currentPage, pageSize);
 
   return (
     <div className="shop">
@@ -54,20 +53,22 @@ const Shop = () => {
       <Container>
         <div className="shop__filter">
           <div className="shop__filter-cat">
-            <H4>Filter by Category</H4>
             <div></div>
           </div>
           <div className="shop__filter-cat">
-            <Filter onFilter={handlePriceFilter} data={priceFilterService} />
+            <Filter
+              onFilter={handlePriceFilter}
+              data={priceFilterService}
+              title="Filter By Category"
+            />
           </div>
           <div className="shop__filter-cat">
-            <H4>Filter by Price</H4>
             <div>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+              <Filter
+                onFilter={handleRatingFilter}
+                data={ratingFilterService}
+                title="Filter By Ratings"
+              />
             </div>
           </div>
         </div>
@@ -76,6 +77,7 @@ const Shop = () => {
             <h1>Loading</h1>
           ) : (
             <>
+              <h2>{paginatedProducts.length}</h2>
               <div className="shop__items-container">
                 {paginatedProducts.length ? (
                   paginatedProducts.map((product) => (
@@ -86,7 +88,7 @@ const Shop = () => {
                 )}
               </div>
               <Pagination
-                itemsCount={filteredProductsByPrice?.length}
+                itemsCount={filterByRating.length}
                 pageSize={pageSize}
                 currentPage={currentPage}
                 onPageChange={handlePageChange}

@@ -17,10 +17,10 @@ const Filter = ({ title = "", data = [], onFilter = () => false }) => {
           <input
             className="form-check-input"
             type="checkbox"
-            id={name}
+            id={id}
             onChange={() => handleChange(value)}
           />
-          <label className="form-check-label" htmlFor={name}>
+          <label className="form-check-label" htmlFor={id}>
             {name}
           </label>
         </div>
