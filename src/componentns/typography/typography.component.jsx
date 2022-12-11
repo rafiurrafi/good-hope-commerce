@@ -17,8 +17,12 @@ export const H1 = ({ children, color = "white", style }) => {
     </h1>
   );
 };
-export function H4({ children }) {
-  return <h4 className="heading-tetra">{children}</h4>;
+export function H4({ children, color = "" }) {
+  return (
+    <h4 className="heading-tetra" style={{ color }}>
+      {children}
+    </h4>
+  );
 }
 export function SubHeading({ children, color = "white", style = {} }) {
   return (

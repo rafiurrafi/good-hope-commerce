@@ -86,6 +86,27 @@ const Home = () => {
           </Slider>
         </div>
       </section>
+      <section style={{ margin: "6rem 0" }}>
+        <BigHeading
+          color="black"
+          style={{ textAlign: "center", marginBottom: "4.5rem" }}
+        >
+          You will <span>Like</span> this
+        </BigHeading>
+        <Container>
+          <div className="product-cards-home">
+            {isLoading ? (
+              <h1>Loading</h1>
+            ) : (
+              products
+                ?.filter((_, id) => id > 4 && id < 9)
+                .map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))
+            )}
+          </div>
+        </Container>
+      </section>
       <section className="home-blog">
         <BlogCard />
       </section>
