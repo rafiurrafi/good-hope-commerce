@@ -7,6 +7,11 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 3rem;
+    @media (max-width: 768px) {
+      display: block;
+      width: 70%;
+      margin-left: 15%;
+    }
   }
   h1 {
     margin-bottom: 3rem;
@@ -33,6 +38,12 @@
       width: 30%;
       margin-right: 3%;
       margin-bottom: 0.7rem;
+      @media (max-width: 768px) {
+        width: 17%;
+        &:last-of-type {
+          display: none;
+        }
+      }
     }
   }
   &__input {
@@ -51,9 +62,9 @@
       flex: 1;
       background-color: #494949;
       font-size: 2rem;
-      padding: 0.2rem;
       border: none;
       color: white;
+      align-self: stretch;
       &:hover {
         color: var(--color-primary);
       }
@@ -62,6 +73,12 @@
   &__social-icons {
     display: flex;
     justify-content: space-between;
+    @media (max-width: 768px) {
+      display: block;
+      & > * {
+        margin-right: 1.5rem;
+      }
+    }
   }
   &__icon {
     color: white;

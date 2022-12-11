@@ -3,6 +3,9 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     grid-gap: 4rem;
+    @media (max-width: 992px) {
+      display: block;
+    }
   }
 }
 .product-cards-home {
@@ -12,7 +15,7 @@
 }
 .home-icons {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
   grid-gap: 2rem;
   margin: 6rem 0;
 }
@@ -27,6 +30,14 @@
   & > div {
     width: 70%;
     margin-left: 15%;
+    @media (max-width: 992px) {
+      width: 90%;
+      margin-left: 5%;
+    }
+    @media (max-width: 576px) {
+      width: 98%;
+      margin-left: 2%;
+    }
   }
   .slick-dots {
     text-align: center;
