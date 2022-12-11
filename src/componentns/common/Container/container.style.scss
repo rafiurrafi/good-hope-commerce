@@ -2,3 +2,33 @@
   max-width: var(--container-width);
   margin: 0 auto;
 }
+// XX-Large devices (larger desktops, 1400px and up)
+@media (min-width: 1400px) {
+}
+// X-Large devices (large desktops, 1200px and up)
+@media (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+    background-color: red;
+  }
+}
+@media (max-width: 992px) {
+  .container {
+    max-width: 720px;
+    background-color: orange;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    max-width: 540px;
+    background-color: orangered;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    max-width: 100%;
+    padding: 2%;
+    background-color: red;
+  }
+}

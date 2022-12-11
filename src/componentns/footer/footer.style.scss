@@ -27,18 +27,6 @@
     align-items: center;
     gap: 1.5rem;
     margin-bottom: 2rem;
-    &-icon {
-      color: white;
-      height: 3rem;
-      width: 3rem;
-      border: 1px solid white;
-      text-align: center;
-      padding: 0.5rem;
-    }
-    &:hover &-icon {
-      color: var(--color-primary);
-      border: 1px solid var(--color-primary);
-    }
   }
   &__insta {
     img {
@@ -69,6 +57,30 @@
       &:hover {
         color: var(--color-primary);
       }
+    }
+  }
+  &__social-icons {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__icon {
+    color: white;
+    height: 3rem;
+    width: 3rem;
+    border: 1px solid white;
+    text-align: center;
+    padding: 0.5rem;
+    &.footer__icon-bg {
+      background-color: white;
+      color: var(--gray-dark-1);
+      &:hover {
+        background-color: var(--color-primary);
+        color: white;
+      }
+    }
+    &:hover {
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
     }
   }
 }

@@ -2,9 +2,16 @@ import { Link } from "react-router-dom";
 import Container from "../common/Container/container.component";
 import { H1, H4 } from "../typography/typography.component";
 import "./footer.style.scss";
-import { FaLocationArrow } from "react-icons/fa";
+import {
+  FaLocationArrow,
+  FaFacebookF,
+  FaLinkedinIn,
+  FaPinterestP,
+  FaDribbble,
+} from "react-icons/fa";
 import { BsPhone, BsEnvelopeOpen } from "react-icons/bs";
 import { BiRightArrowAlt } from "react-icons/bi";
+import { TfiTwitter } from "react-icons/tfi";
 
 import img1 from "./assets/01.jpg";
 import img2 from "./assets/02.jpg";
@@ -21,19 +28,19 @@ const Footer = () => {
           <div>
             <H4 color="white">Contact Us</H4>
             <div className="footer__contact">
-              <div className="footer__contact-icon">
+              <div className="footer__icon">
                 <FaLocationArrow />
               </div>
               <p>Your address goes here</p>
             </div>
             <div className="footer__contact">
-              <div className="footer__contact-icon">
+              <div className="footer__icon">
                 <BsEnvelopeOpen />
               </div>
               <p>demo@example.com</p>
             </div>
             <div className="footer__contact">
-              <div className="footer__contact-icon">
+              <div className="footer__icon">
                 <BsPhone />
               </div>
               <p>+880 - 123 456 789</p>
@@ -67,6 +74,24 @@ const Footer = () => {
                   <BiRightArrowAlt />
                 </button>
               </div>
+            </div>
+            <H4>Social Network</H4>
+            <div className="footer__social-icons">
+              <button className="footer__icon footer__icon-bg">
+                <FaFacebookF />
+              </button>
+              <button className="footer__icon footer__icon-bg">
+                <TfiTwitter />
+              </button>
+              <button className="footer__icon footer__icon-bg">
+                <FaLinkedinIn />
+              </button>
+              <button className="footer__icon footer__icon-bg">
+                <FaPinterestP />
+              </button>
+              <button className="footer__icon footer__icon-bg">
+                <FaDribbble />
+              </button>
             </div>
           </div>
         </Container>
