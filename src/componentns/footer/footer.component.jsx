@@ -67,7 +67,10 @@ const Footer = () => {
           </div>
           <div>
             <H4 color="white">Newsletters</H4>
-            <div className="footer__newsLetter">
+            <div
+              className="footer__newsLetter"
+              style={{ marginBottom: "3rem" }}
+            >
               <div className="footer__input">
                 <input type="text" placeholder="Enter email" />
                 <button>
@@ -75,7 +78,7 @@ const Footer = () => {
                 </button>
               </div>
             </div>
-            <H4>Social Network</H4>
+            <H4 color="white">Social Network</H4>
             <div className="footer__social-icons">
               <button className="footer__icon footer__icon-bg">
                 <FaFacebookF />

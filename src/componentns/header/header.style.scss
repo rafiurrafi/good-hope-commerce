@@ -79,6 +79,9 @@
 .header {
   padding: 2.5rem 0;
   position: relative;
+  @media (max-width: 768px) {
+    padding: 1rem 0;
+  }
   .container {
     display: flex;
     justify-content: space-between;
@@ -97,9 +100,19 @@
     }
     .header__menus {
       display: block !important;
-      background-color: red;
+      background-color: white;
+      padding: 3rem 1.5rem;
+      padding-right: 15rem;
+      box-shadow: 0 0 1rem rgba($color: #000000, $alpha: 0.15);
       li {
         display: block;
+        a {
+          margin-bottom: 1.5rem;
+          display: inline-block;
+          &::after {
+            margin-left: 0;
+          }
+        }
       }
     }
   }
@@ -145,24 +158,9 @@
         width: 2rem;
       }
     }
-    // &::after {
-    //   content: "";
-    //   position: absolute;
-    //   display: block;
-    //   bottom: -5px;
-    //   height: 3px;
-    //   width: 0;
-    //   margin-left: 1rem;
-    //   background-color: var(--color-primary);
-    //   transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    //   transition-delay: 0.2s;
-    // }
-    // &:hover {
-    //   color: var(--color-primary);
-    //   &:hover::after {
-    //     width: 3rem;
-    //   }
-    // }
+  }
+  &__hum-btn {
+    font-size: 3rem;
   }
 }
 

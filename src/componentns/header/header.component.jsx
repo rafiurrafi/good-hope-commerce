@@ -3,6 +3,7 @@ import { HiRss } from "react-icons/hi";
 import { GiBee } from "react-icons/gi";
 import { RiHeartLine } from "react-icons/ri";
 import { BsCart4 } from "react-icons/bs";
+import { BiMenu } from "react-icons/bi";
 import Container from "../common/Container/container.component";
 import { Link, NavLink } from "react-router-dom";
 import "./header.style.scss";
@@ -156,7 +157,12 @@ export function HeaderMain() {
         </ul>
         <Searchbar />
         <div ref={menuRef}>
-          <button onClick={() => setShowMenu(!showMenu)}>Icons</button>
+          <button
+            className="header__hum-btn"
+            onClick={() => setShowMenu(!showMenu)}
+          >
+            <BiMenu />
+          </button>
           <div className={`header__menus-mobile ${showMenu ? "active" : ""}`}>
             <ul className="header__menus">
               <li>
@@ -188,9 +194,6 @@ export function HeaderMain() {
                 >
                   Women
                 </NavLink>
-              </li>
-              <li>
-                <MenuDropdown />
               </li>
               <li>
                 <NavLink
