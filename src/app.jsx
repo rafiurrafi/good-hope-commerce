@@ -1,20 +1,39 @@
 import { HeaderMain, HeaderTop } from "./componentns/header/header.component";
 import "./app.scss";
 import { Route, Routes } from "react-router-dom";
-import Home from "./pages/home/home.component";
-import ProductDetails from "./pages/product-details/product-details.component";
-import Wishlist from "./pages/wishlist/wishlist.component";
-import CartPage from "./pages/cart-page/cart-page.component";
-import Checkout from "./pages/checkout/checkout.component";
-import Contact from "./pages/contact/contact.component";
-import Shop from "./pages/shop/shop.component";
-import Authentication from "./pages/auth/authentication.component";
-import SearchPage from "./pages/search-page/search-page.component";
-import SpecificShop from "./pages/specific-shop/specific-shop.component";
+import { lazy, Suspense } from "react";
 import Footer from "./componentns/footer/footer.component";
+import Loading from "./componentns/common/loading/loading.component";
+
+const Home = lazy(() => import("./pages/home/home.component"));
+const ProductDetails = lazy(() =>
+  import("./pages/product-details/product-details.component")
+);
+const Wishlist = lazy(() => import("./pages/wishlist/wishlist.component"));
+const CartPage = lazy(() => import("./pages/cart-page/cart-page.component"));
+const Checkout = lazy(() => import("./pages/checkout/checkout.component"));
+const Contact = lazy(() => import("./pages/contact/contact.component"));
+const Shop = lazy(() => import("./pages/shop/shop.component"));
+const Authentication = lazy(() =>
+  import("./pages/auth/authentication.component")
+);
+const SearchPage = lazy(() =>
+  import("./pages/search-page/search-page.component")
+);
+const SpecificShop = lazy(() =>
+  import("./pages/specific-shop/specific-shop.component")
+);
+function LoaderContainer() {
+  return (
+    <div className="loader-container">
+      <Loading />
+    </div>
+  );
+}
+
 const App = () => {
   return (
-    <div>
+    <Suspense fallback={<LoaderContainer />}>
       <HeaderTop />
       <HeaderMain />
       <Routes>
@@ -30,7 +49,7 @@ const App = () => {
         <Route path="/auth/:status" element={<Authentication />} />
       </Routes>
       <Footer />
-    </div>
+    </Suspense>
   );
 };
 

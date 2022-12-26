@@ -39,7 +39,8 @@
   &__btns {
     display: flex;
     position: absolute;
-    top: 40rem;
+    // top: 40rem;
+    bottom: 1.5rem;
     left: 0;
     width: 100%;
     a {
