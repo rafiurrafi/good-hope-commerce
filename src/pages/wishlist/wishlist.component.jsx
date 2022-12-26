@@ -2,10 +2,18 @@ import { useContext } from "react";
 import { ProductContext } from "../../context/product.context";
 import Container from "../../componentns/common/Container/container.component";
 import "./wishlist.style.scss";
-import { ButtonLink } from "../../componentns/typography/typography.component";
-
+import {
+  ButtonIcon,
+  ButtonLink,
+} from "../../componentns/typography/typography.component";
+import { HiOutlinePlus, HiMinus } from "react-icons/hi";
+import { GiCrossMark } from "react-icons/gi";
+import InputWithButton from "../../componentns/common/input/input.component";
+import { CartContext } from "../../context/cart.context";
 const Wishlist = () => {
   const { products, isLoading } = useContext(ProductContext);
+  const { cartItems, addCartItem, removeCartItem, clearCartItem } =
+    useContext(CartContext);
   function getWishlist() {
     return products.filter((product) => product.wishlist);
   }
@@ -17,7 +25,7 @@ const Wishlist = () => {
         {isLoading ? (
           "Loading..."
         ) : (
-          <div className="wishlist-table__container">
+          <div className="cart-table__container">
             <table className="wishlist-table">
               <thead>
                 <tr>
@@ -29,17 +37,32 @@ const Wishlist = () => {
                 </tr>
               </thead>
               <tbody>
-                {wishlists.map(({ id, title, thumbnail, price }) => (
-                  <tr key={id}>
+                {wishlists.map((item) => (
+                  <tr key={item.id}>
                     <td className="name">
-                      <img src={thumbnail} alt="" />
-                      <p>{title}</p>
+                      <div>
+                        <img src={item.thumbnail} alt="" /> <p>{item.title}</p>
+                      </div>
                     </td>
-                    <td className="price">{price}</td>
-                    <td className="qty"></td>
-                    <td className="status"></td>
+                    <td className="price">{item.price}</td>
+                    <td className="quantity">
+                      <span onClick={() => removeCartItem(item)}>
+                        <ButtonIcon icon={<HiMinus />} />
+                      </span>
+                      <span
+                        style={{ display: "inline-block", padding: "0 1rem" }}
+                      >
+                        {item.quantity}
+                      </span>
+                      <span onClick={() => addCartItem(item)}>
+                        <ButtonIcon icon={<HiOutlinePlus />} />
+                      </span>
+                    </td>
+                    <td className="total">{item.quantity * item.price}</td>
                     <td className="action">
-                      <ButtonLink type="sm">Add to cart</ButtonLink>
+                      <span onClick={() => clearCartItem(item)}>
+                        <ButtonIcon icon={<GiCrossMark />} />
+                      </span>
                     </td>
                   </tr>
                 ))}

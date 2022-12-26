@@ -31,7 +31,10 @@ const CartDropdown = () => {
             </div>
           ))}
         </div>
-        <div className="cart-dropdown__btns">
+        <div
+          className="cart-dropdown__btns"
+          onClick={() => setIsCartOpen(false)}
+        >
           <ButtonLink to="/checkout" size="small">
             Checkout
           </ButtonLink>

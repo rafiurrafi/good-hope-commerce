@@ -22,61 +22,53 @@ const CartPage = () => {
         <div className="cart-page__left">
           <div className="cart-table__container">
             {/* table started  */}
-            <table>
-              <caption>Statement Summary</caption>
-              <thead>
-                <tr>
-                  {tableRow.map((t) => (
-                    <th scope="col" key={t}>
-                      {t}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td data-label="Account">Visa - 3412</td>
-                  <td data-label="Due Date">04/01/2016</td>
-                  <td data-label="Amount">$1,190</td>
-                  <td data-label="Period">03/01/2016 - 03/31/2016</td>
-                </tr>
-                {cartItems.map((item, id) => (
-                  <tr key={item.id}>
-                    <td data-label={tableRow[id]} className="name">
-                      <div>
-                        <img src={item.thumbnail} alt="" /> <p>{item.title}</p>
-                      </div>
-                    </td>
-                    <td data-label={tableRow[id]} className="price">
-                      {item.price}
-                    </td>
-                    <td data-label={tableRow[id]} className="quantity">
-                      {" "}
-                      <span onClick={() => removeCartItem(item)}>
-                        <ButtonIcon icon={<HiMinus />} />
-                      </span>
-                      <span
-                        style={{ display: "inline-block", padding: "0 1rem" }}
-                      >
-                        {item.quantity}
-                      </span>{" "}
-                      <span onClick={() => addCartItem(item)}>
-                        <ButtonIcon icon={<HiOutlinePlus />} />
-                      </span>
-                    </td>
-                    <td data-label={tableRow[id]} className="total">
-                      {item.quantity * item.price}
-                    </td>
-                    <td data-label={tableRow[id]} className="action">
-                      {" "}
-                      <span onClick={() => clearCartItem(item)}>
-                        <ButtonIcon icon={<GiCrossMark />} />
-                      </span>
-                    </td>
+            {cartItems.length ? (
+              <table>
+                <thead>
+                  <tr>
+                    {tableRow.map((t) => (
+                      <th scope="col" key={t}>
+                        {t}
+                      </th>
+                    ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {cartItems.map((item) => (
+                    <tr key={item.id}>
+                      <td className="name">
+                        <div>
+                          <img src={item.thumbnail} alt="" />{" "}
+                          <p>{item.title}</p>
+                        </div>
+                      </td>
+                      <td className="price">{item.price}</td>
+                      <td className="quantity">
+                        <span onClick={() => removeCartItem(item)}>
+                          <ButtonIcon icon={<HiMinus />} />
+                        </span>
+                        <span
+                          style={{ display: "inline-block", padding: "0 1rem" }}
+                        >
+                          {item.quantity}
+                        </span>
+                        <span onClick={() => addCartItem(item)}>
+                          <ButtonIcon icon={<HiOutlinePlus />} />
+                        </span>
+                      </td>
+                      <td className="total">{item.quantity * item.price}</td>
+                      <td className="action">
+                        <span onClick={() => clearCartItem(item)}>
+                          <ButtonIcon icon={<GiCrossMark />} />
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div>No items found</div>
+            )}
           </div>
         </div>
         <div className="cart-page__right">
