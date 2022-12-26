@@ -6,11 +6,16 @@ import { SearchContext } from "../../context/search.context";
 import Loading from "../common/loading/loading.component";
 import { ButtonLink } from "../typography/typography.component";
 import "./searchbar.style.scss";
+import { useClickOutside } from "../../utils/utils";
 
 const Searchbar = () => {
   const { searchQuery, searchResult, isLoading, showAuto, dispatch } =
     useContext(SearchContext);
   const navigate = useNavigate();
+
+  const autoCompleteRef = useClickOutside(() =>
+    dispatch({ type: SEARCH_ACTIONS.TOGGLE_SHOW_AUTO, payload: false })
+  );
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -65,7 +70,7 @@ const Searchbar = () => {
         </button>
       </form>
       {showAuto && (
-        <div className="search-box__auto">
+        <div className="search-box__auto" ref={autoCompleteRef}>
           {isLoading ? (
             <div className="search-loading">
               <Loading />
