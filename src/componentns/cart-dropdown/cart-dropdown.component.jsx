@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/cart.context";
-import { useClickOutside } from "../../utils/utils";
+
 import { ButtonLink } from "../typography/typography.component";
 import "./cart-dropdown.style.scss";
 const CartDropdown = () => {
   const { cartItems, clearCartItem, setIsCartOpen } = useContext(CartContext);
-  const domRef = useClickOutside(() => setIsCartOpen(false));
+
   return (
-    <div className="cart-dropdown" ref={domRef}>
+    <div className="cart-dropdown">
       <div className="cart-dropdown__inner">
         <h3>Cart Dropdown</h3>
         <div className="cart-dropdown__items">

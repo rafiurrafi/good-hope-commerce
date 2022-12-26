@@ -13,9 +13,11 @@ import { CartContext } from "../../context/cart.context";
 import { UserContext } from "../../context/user.context";
 import { signUserOut } from "../../utils/firebase.utils";
 import MenuDropdown from "../common/menu-dropdown/menu-dropdown.component";
-
+import { useState } from "react";
+import { useClickOutside } from "../../utils/utils";
 export function HeaderTop() {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+  const domRef = useClickOutside(() => setIsCartOpen(false));
   const { user, setUser } = useContext(UserContext);
   async function handleSignOut() {
     await signUserOut();
@@ -71,6 +73,7 @@ export function HeaderTop() {
             </Link>
           </div>
           <div
+            ref={domRef}
             className="header-top__cart-icon"
             onClick={() => setIsCartOpen(!isCartOpen)}
           >
@@ -80,14 +83,16 @@ export function HeaderTop() {
             {cartCount && (
               <div className="header-top__cart-count">{cartCount}</div>
             )}
+            {isCartOpen && <CartDropdown />}
           </div>
         </div>
-        {isCartOpen && <CartDropdown />}
       </Container>
     </div>
   );
 }
 export function HeaderMain() {
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useClickOutside(() => setShowMenu(false));
   return (
     <header className="header">
       <Container>
@@ -150,6 +155,66 @@ export function HeaderMain() {
           </li>
         </ul>
         <Searchbar />
+        <div ref={menuRef}>
+          <button onClick={() => setShowMenu(!showMenu)}>Icons</button>
+          <div className={`header__menus-mobile ${showMenu ? "active" : ""}`}>
+            <ul className="header__menus">
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `header-menu__links ${isActive ? "active" : ""}`
+                  }
+                  to="/"
+                >
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `header-menu__links ${isActive ? "active" : ""}`
+                  }
+                  to="/shop/mens-shirts"
+                >
+                  Men
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `header-menu__links ${isActive ? "active" : ""}`
+                  }
+                  to="/shop/womens-jewellery"
+                >
+                  Women
+                </NavLink>
+              </li>
+              <li>
+                <MenuDropdown />
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `header-menu__links ${isActive ? "active" : ""}`
+                  }
+                  to="/contact"
+                >
+                  Contact
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  className={({ isActive }) =>
+                    `header-menu__links ${isActive ? "active" : ""}`
+                  }
+                  to="/shop/all"
+                >
+                  Shop
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
       </Container>
     </header>
   );

@@ -9,19 +9,19 @@
 @media (max-width: 1200px) {
   .container {
     max-width: 960px;
-    background-color: red;
+    // background-color: red;
   }
 }
 @media (max-width: 992px) {
   .container {
     max-width: 720px;
-    background-color: orange;
+    // background-color: orange;
   }
 }
 @media (max-width: 768px) {
   .container {
     max-width: 540px;
-    background-color: orangered;
+    // background-color: orangered;
   }
 }
 
@@ -29,6 +29,6 @@
   .container {
     max-width: 100%;
     padding: 2%;
-    background-color: red;
+    // background-color: red;
   }
 }

@@ -1,6 +1,9 @@
 .search-box {
   position: relative;
   flex: 0 0 25%;
+  @media (max-width: 768px) {
+    display: none;
+  }
   form {
     border: 1px solid #eee;
     padding: 1rem;
