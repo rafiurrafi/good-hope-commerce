@@ -57,6 +57,7 @@ const Searchbar = () => {
           placeholder="Search anything"
           onChange={handleChange}
           name="searchQuery"
+          autoComplete="off"
           value={searchQuery}
         />
         <button>

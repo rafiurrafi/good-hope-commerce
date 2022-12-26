@@ -10,6 +10,7 @@ import { HiOutlinePlus, HiMinus } from "react-icons/hi";
 import { GiCrossMark } from "react-icons/gi";
 import "./cart-page.style.scss";
 import InputWithButton from "../../componentns/common/input/input.component";
+const tableRow = ["Product", "Price", "Quantity", "Total", "Action"];
 const CartPage = () => {
   const { cartItems, addCartItem, removeCartItem, clearCartItem } =
     useContext(CartContext);
@@ -20,26 +21,36 @@ const CartPage = () => {
       <Container>
         <div className="cart-page__left">
           <div className="cart-table__container">
-            <table className="cart-table">
-              <thead className="cart-table__head">
+            {/* table started  */}
+            <table>
+              <caption>Statement Summary</caption>
+              <thead>
                 <tr>
-                  <th className="name">Products</th>
-                  <th className="price">Price</th>
-                  <th className="quantity">Quantity</th>
-                  <th className="total">Total</th>
-                  <th className="action">Action</th>
+                  {tableRow.map((t) => (
+                    <th scope="col" key={t}>
+                      {t}
+                    </th>
+                  ))}
                 </tr>
               </thead>
-              <tbody className="cart-table__body">
-                {cartItems.map((item) => (
-                  <tr>
-                    <td className="name">
+              <tbody>
+                <tr>
+                  <td data-label="Account">Visa - 3412</td>
+                  <td data-label="Due Date">04/01/2016</td>
+                  <td data-label="Amount">$1,190</td>
+                  <td data-label="Period">03/01/2016 - 03/31/2016</td>
+                </tr>
+                {cartItems.map((item, id) => (
+                  <tr key={item.id}>
+                    <td data-label={tableRow[id]} className="name">
                       <div>
                         <img src={item.thumbnail} alt="" /> <p>{item.title}</p>
                       </div>
                     </td>
-                    <td className="price">{item.price}</td>
-                    <td className="quantity">
+                    <td data-label={tableRow[id]} className="price">
+                      {item.price}
+                    </td>
+                    <td data-label={tableRow[id]} className="quantity">
                       {" "}
                       <span onClick={() => removeCartItem(item)}>
                         <ButtonIcon icon={<HiMinus />} />
@@ -53,8 +64,10 @@ const CartPage = () => {
                         <ButtonIcon icon={<HiOutlinePlus />} />
                       </span>
                     </td>
-                    <td className="total">{item.quantity * item.price}</td>
-                    <td className="action">
+                    <td data-label={tableRow[id]} className="total">
+                      {item.quantity * item.price}
+                    </td>
+                    <td data-label={tableRow[id]} className="action">
                       {" "}
                       <span onClick={() => clearCartItem(item)}>
                         <ButtonIcon icon={<GiCrossMark />} />

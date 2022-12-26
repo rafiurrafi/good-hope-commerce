@@ -1,0 +1,21 @@
+.pagination {
+  margin: 4rem 0;
+  &__btn {
+    height: 3rem;
+    width: 3rem;
+    text-align: center;
+    border: 1px solid var(--notification-color);
+    background-color: transparent;
+    border-radius: 60%;
+    cursor: pointer;
+    color: var(--notification-color);
+    transition: 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    &.active {
+      background-color: var(--notification-color);
+      color: white;
+    }
+    &:not(:last-of-type) {
+      margin-right: 1.5rem;
+    }
+  }
+}
