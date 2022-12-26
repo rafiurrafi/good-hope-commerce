@@ -24,7 +24,7 @@ const Contact = () => {
           <InputWithLabel label="Email" placeholder="Rahim" />
           <InputWithLabel label="Subject" placeholder="Abdur" />
           <SimpleTextarea placeholder="Go boy" />
-          <ButtonLink>Go to checkout</ButtonLink>
+          <ButtonLink>Send Your Thoughts</ButtonLink>
         </div>
         <div className="contact__details">
           <div>

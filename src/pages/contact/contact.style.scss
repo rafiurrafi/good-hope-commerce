@@ -9,9 +9,10 @@
   }
   &__inputs {
     flex: 0 0 60%;
-    @media (max-width: 768px) {
-      margin-bottom: 4rem;
-    }
+
+    margin-bottom: 4rem;
+    // @media (max-width: 768px) {
+    // }
   }
   &__title {
     font-size: var(--font-size-1);

@@ -4,7 +4,7 @@ import { GiBee } from "react-icons/gi";
 import { RiHeartLine } from "react-icons/ri";
 import { BsCart4 } from "react-icons/bs";
 import Container from "../common/Container/container.component";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./header.style.scss";
 import Searchbar from "../searchbar/searchbar.component";
 import CartDropdown from "../cart-dropdown/cart-dropdown.component";
@@ -96,32 +96,57 @@ export function HeaderMain() {
         </Link>
         <ul className="header__menus">
           <li>
-            <Link className="header-menu__links" to="/">
+            <NavLink
+              className={({ isActive }) =>
+                `header-menu__links ${isActive ? "active" : ""}`
+              }
+              to="/"
+            >
               Home
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link className="header-menu__links" to="/shop/mens-shirts">
+            <NavLink
+              className={({ isActive }) =>
+                `header-menu__links ${isActive ? "active" : ""}`
+              }
+              to="/shop/mens-shirts"
+            >
               Men
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link className="header-menu__links" to="/shop/womens-jewellery">
+            <NavLink
+              className={({ isActive }) =>
+                `header-menu__links ${isActive ? "active" : ""}`
+              }
+              to="/shop/womens-jewellery"
+            >
               Women
-            </Link>
+            </NavLink>
           </li>
           <li>
             <MenuDropdown />
           </li>
           <li>
-            <Link className="header-menu__links" to="/contact">
+            <NavLink
+              className={({ isActive }) =>
+                `header-menu__links ${isActive ? "active" : ""}`
+              }
+              to="/contact"
+            >
               Contact
-            </Link>
+            </NavLink>
           </li>
           <li>
-            <Link className="header-menu__links" to="/shop">
+            <NavLink
+              className={({ isActive }) =>
+                `header-menu__links ${isActive ? "active" : ""}`
+              }
+              to="/shop/all"
+            >
               Shop
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <Searchbar />
