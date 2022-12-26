@@ -160,7 +160,11 @@
     }
   }
   &__hum-btn {
+    display: none;
     font-size: 3rem;
+    @media (max-width: 576px) {
+      display: block;
+    }
   }
 }
 

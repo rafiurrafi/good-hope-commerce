@@ -156,11 +156,8 @@ export function HeaderMain() {
           </li>
         </ul>
         <Searchbar />
-        <div ref={menuRef}>
-          <button
-            className="header__hum-btn"
-            onClick={() => setShowMenu(!showMenu)}
-          >
+        <div ref={menuRef} className="header__hum-btn">
+          <button onClick={() => setShowMenu(!showMenu)}>
             <BiMenu />
           </button>
           <div className={`header__menus-mobile ${showMenu ? "active" : ""}`}>
