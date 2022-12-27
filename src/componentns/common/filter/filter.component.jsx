@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import "./filter.style.scss";
 const Filter = ({ title = "", data = [], onFilter = () => false }) => {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const handleChange = (name) => {
@@ -11,23 +11,12 @@ const Filter = ({ title = "", data = [], onFilter = () => false }) => {
   };
   return (
     <div className="filter my-4">
-      <h4 className="mb-3">{title}</h4>
+      <h4 style={{ marginBottom: "3rem" }}>{title}</h4>
       {data.map(({ id, name, value }) => (
-        <div key={id} className="form-check">
-          <input
-            className="form-check-input"
-            type="checkbox"
-            id={id}
-            onChange={() => handleChange(value)}
-          />
-          <label className="form-check-label" htmlFor={id}>
-            {name}
-          </label>
+        <div class="form-group" key={id}>
+          <input type="checkbox" id={id} onChange={() => handleChange(value)} />
+          <label htmlFor={id}>{name}</label>
         </div>
-        // <div class="form-group" key={id}>
-        //   <input type="checkbox" id={id} onChange={() => handleChange(value)} />
-        //   <label htmlFor={id}>{name}</label>
-        // </div>
       ))}
     </div>
   );
