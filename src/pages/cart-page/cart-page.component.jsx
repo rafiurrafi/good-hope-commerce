@@ -24,6 +24,11 @@ const CartPage = () => {
             {/* table started  */}
             {cartItems.length ? (
               <table>
+                <caption>
+                  <h1>
+                    Your <span>Cart</span>
+                  </h1>
+                </caption>
                 <thead>
                   <tr>
                     {tableRow.map((t) => (
@@ -45,7 +50,7 @@ const CartPage = () => {
                       <td className="price">{item.price}</td>
                       <td className="quantity">
                         <span onClick={() => removeCartItem(item)}>
-                          <ButtonIcon icon={<HiMinus />} />
+                          <ButtonIcon color="#0d779e" icon={<HiMinus />} />
                         </span>
                         <span
                           style={{ display: "inline-block", padding: "0 1rem" }}
@@ -53,13 +58,16 @@ const CartPage = () => {
                           {item.quantity}
                         </span>
                         <span onClick={() => addCartItem(item)}>
-                          <ButtonIcon icon={<HiOutlinePlus />} />
+                          <ButtonIcon
+                            color="#0d779e"
+                            icon={<HiOutlinePlus />}
+                          />
                         </span>
                       </td>
                       <td className="total">{item.quantity * item.price}</td>
                       <td className="action">
                         <span onClick={() => clearCartItem(item)}>
-                          <ButtonIcon icon={<GiCrossMark />} />
+                          <ButtonIcon color="#f20c3f" icon={<GiCrossMark />} />
                         </span>
                       </td>
                     </tr>

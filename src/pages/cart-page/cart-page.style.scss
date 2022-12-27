@@ -48,12 +48,25 @@
     width: 100%;
     // white-space: nowrap;
     min-width: 72rem;
+    margin-bottom: 5rem;
+    caption {
+      margin-bottom: 5rem;
+      h1 {
+        font-weight: 400;
+      }
+      span {
+        color: var(--color-primary);
+      }
+    }
   }
   img {
     height: 5rem;
     width: 10rem;
   }
-
+  tbody td {
+    padding: 0.7rem 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
   tbody td {
     &:not(:first-of-type) {
       text-align: center;

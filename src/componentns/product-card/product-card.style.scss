@@ -1,11 +1,13 @@
 .product-card {
   position: relative;
   box-shadow: 0 5px 1rem rgba($color: #000000, $alpha: 0.09);
+  min-height: 32rem;
   &__img {
-    height: 70%;
+    height: 20rem;
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
   }
   &__overlay {
@@ -13,7 +15,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 70%;
+    height: 20rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -26,6 +28,10 @@
     margin-left: 10%;
     display: flex;
     justify-content: space-between;
+    button:hover {
+      background-color: var(--notification-color) !important;
+      border: 1px solid var(--notification-color) !important;
+    }
   }
   &:hover &__overlay {
     opacity: 1;
@@ -39,6 +45,9 @@
       color: var(--color-primary);
       margin-left: 1rem;
     }
+  }
+  &__content {
+    padding: 0 1rem;
   }
 }
 // modal

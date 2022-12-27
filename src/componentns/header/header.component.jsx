@@ -81,7 +81,7 @@ export function HeaderTop() {
             <button href="">
               <BsCart4 />
             </button>
-            {cartCount && (
+            {cartCount !== 0 && (
               <div className="header-top__cart-count">{cartCount}</div>
             )}
             {isCartOpen && <CartDropdown />}

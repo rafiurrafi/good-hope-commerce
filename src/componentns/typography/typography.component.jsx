@@ -55,9 +55,12 @@ export function SmallText({ children, style = {} }) {
     </p>
   );
 }
-export function ButtonIcon({ icon }) {
+export function ButtonIcon({ icon, color = "white" }) {
   return (
-    <button className="btn-icon">
+    <button
+      className="btn-icon"
+      style={{ color, border: `1px solid ${color}` }}
+    >
       <span>{icon}</span>
     </button>
   );
