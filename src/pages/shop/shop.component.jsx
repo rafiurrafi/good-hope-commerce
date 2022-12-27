@@ -63,71 +63,73 @@ const Shop = () => {
   const paginatedProducts = paginate(filterByRating, currentPage, pageSize);
 
   return (
-    <div className="shop">
+    <>
       <Title title="Shop" route="Home - Shop Page" />
-      <Container>
-        <div className="shop__filter">
-          <div className="shop__filter-cat">
-            <div></div>
-          </div>
-          <div className="shop__filter-cat">
-            <Filter
-              onFilter={handlePriceFilter}
-              data={priceFilterService}
-              title="Filter By Category"
-            />
-          </div>
-          <div className="shop__filter-cat">
-            <div>
+      <div className="shop">
+        <Container>
+          <div className="shop__filter">
+            <div className="shop__filter-cat">
+              <div></div>
+            </div>
+            <div className="shop__filter-cat">
               <Filter
-                onFilter={handleRatingFilter}
-                data={ratingFilterService}
-                title="Filter By Ratings"
+                onFilter={handlePriceFilter}
+                data={priceFilterService}
+                title="Filter By Category"
               />
             </div>
-          </div>
-          <div className="shop__filter-cat">
-            <div>
-              <select
-                name=""
-                id=""
-                value={brand}
-                onChange={(e) => handleBrand(e.target.value)}
-              >
-                <option value="">Select Brand</option>
-                {products.map((product) => (
-                  <option value={product.brand}>{product.brand}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-        <div className="shop__items">
-          {isLoading ? (
-            <h1>Loading</h1>
-          ) : (
-            <>
-              <h2>{paginatedProducts.length}</h2>
-              <div className="shop__items-container">
-                {paginatedProducts.length ? (
-                  paginatedProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))
-                ) : (
-                  <h1>Boss you have no product to show</h1>
-                )}
+            <div className="shop__filter-cat">
+              <div>
+                <Filter
+                  onFilter={handleRatingFilter}
+                  data={ratingFilterService}
+                  title="Filter By Ratings"
+                />
               </div>
-              <Pagination
-                itemsCount={filterByRating.length}
-                pageSize={pageSize}
-                currentPage={currentPage}
-                onPageChange={handlePageChange}
-              />
-            </>
-          )}
-        </div>
-      </Container>
-    </div>
+            </div>
+            <div className="shop__filter-cat">
+              <div>
+                <select
+                  name=""
+                  id=""
+                  value={brand}
+                  onChange={(e) => handleBrand(e.target.value)}
+                >
+                  <option value="">Select Brand</option>
+                  {products.map((product) => (
+                    <option value={product.brand}>{product.brand}</option>
+                  ))}
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="shop__items">
+            {isLoading ? (
+              <h1>Loading</h1>
+            ) : (
+              <>
+                <h2>{paginatedProducts.length}</h2>
+                <div className="shop__items-container">
+                  {paginatedProducts.length ? (
+                    paginatedProducts.map((product) => (
+                      <ProductCard key={product.id} product={product} />
+                    ))
+                  ) : (
+                    <h1>Boss you have no product to show</h1>
+                  )}
+                </div>
+                <Pagination
+                  itemsCount={filterByRating.length}
+                  pageSize={pageSize}
+                  currentPage={currentPage}
+                  onPageChange={handlePageChange}
+                />
+              </>
+            )}
+          </div>
+        </Container>
+      </div>
+    </>
   );
 };
 

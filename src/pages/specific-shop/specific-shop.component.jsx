@@ -11,11 +11,21 @@ import { useState } from "react";
 import { paginate } from "../../utils/utils";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+import Filter from "../../componentns/common/filter/filter.component";
+import {
+  priceFilterService,
+  ratingFilterService,
+} from "../../utils/filterService";
 const SpecificShop = () => {
   //
   const { cat } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [priceFilter, setPriceFilter] = useState([]);
+  const [ratingFilter, setRatingFilter] = useState([]);
+  const [brand, setBrand] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -24,51 +34,97 @@ const SpecificShop = () => {
       .then((data) => setProducts(data.products))
       .finally(() => setIsLoading(false));
   }, [cat]);
+
+  const handlePriceFilter = (filter) => {
+    setPriceFilter(filter);
+  };
+  const handleRatingFilter = (filter) => {
+    setRatingFilter(filter);
+  };
+
+  const filterByPrice = priceFilter.length
+    ? products.filter((product) =>
+        priceFilter.some(
+          (price) => product.price < price && product.price > price - 299
+        )
+      )
+    : products;
+  const filterByRating = ratingFilter.length
+    ? filterByPrice.filter((product) =>
+        ratingFilter.some(
+          (rating) => product.rating < rating && product.rating > rating - 1
+        )
+      )
+    : filterByPrice;
+
   return (
-    <div className="shop">
+    <>
       <Title title="Shop" route="Home - Shop Page" />
-      <Container>
-        <div className="shop__filter">
-          <div className="shop__filter-cat">
-            <H4>Filter by Category</H4>
-            <div></div>
-          </div>
-          <div className="shop__filter-cat">
-            <H4>Filter by Price</H4>
-            <div>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+      <div className="shop">
+        <Container>
+          {/* <div className="shop__filter">
+            <div className="shop__filter-cat">
+              <H4>Filter by Category</H4>
+              <div></div>
             </div>
-          </div>
-          <div className="shop__filter-cat">
-            <H4>Filter by Price</H4>
-            <div>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-            </div>
-          </div>
-        </div>
-        <div className="shop__items">
-          {isLoading ? (
-            <h1>Loading</h1>
-          ) : (
-            <>
-              <div className="shop__items-container">
-                {products.map((product) => (
-                  <ProductCard key={product.id} product={product} />
-                ))}
+            <div className="shop__filter-cat">
+              <H4>Filter by Price</H4>
+              <div>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
               </div>
-            </>
-          )}
-        </div>
-      </Container>
-    </div>
+            </div>
+            <div className="shop__filter-cat">
+              <H4>Filter by Price</H4>
+              <div>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
+              </div>
+            </div>
+          </div> */}
+          <div className="shop__filter">
+            <div className="shop__filter-cat">
+              <div></div>
+            </div>
+            <div className="shop__filter-cat">
+              <Filter
+                onFilter={handlePriceFilter}
+                data={priceFilterService}
+                title="Filter By Category"
+              />
+            </div>
+            <div className="shop__filter-cat">
+              <div>
+                <Filter
+                  onFilter={handleRatingFilter}
+                  data={ratingFilterService}
+                  title="Filter By Ratings"
+                />
+              </div>
+            </div>
+          </div>
+          <div className="shop__items">
+            {isLoading ? (
+              <h1>Loading</h1>
+            ) : (
+              <>
+                <div className="shop__items-container">
+                  {filterByRating.map((product) => (
+                    <ProductCard key={product.id} product={product} />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </Container>
+      </div>
+    </>
   );
 };
 
