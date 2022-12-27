@@ -1,20 +1,23 @@
 .product-details {
   padding-bottom: 5rem;
-  // background-image: linear-gradient(
-  //   to right,
-  //   rgba(0, 0, 0, 0.7),
-  //   rgba(0, 0, 0, 0.9)
-  // );
 }
 .product-des {
   .container {
     display: flex;
     gap: 2rem;
+    @media (max-width: 576px) {
+      display: block;
+    }
   }
   &__img {
     border: 1px solid orangered;
     flex: 0 0 30%;
     max-height: 30rem;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    @media (max-width: 576px) {
+      width: 35rem;
+    }
     img {
       object-fit: cover;
       height: 100%;
@@ -63,7 +66,7 @@
   &__btns {
     position: absolute;
     top: -1.5rem;
-    left: 5rem;
+    left: 4rem;
     background-color: white;
     button {
       margin: 0 1rem;
@@ -71,6 +74,9 @@
       height: 3rem;
       font-size: 1.8rem;
       font-weight: 600;
+      @media (max-width: 768px) {
+        padding: 0 1rem;
+      }
       &.active {
         color: white;
         background-color: var(--notification-color);
