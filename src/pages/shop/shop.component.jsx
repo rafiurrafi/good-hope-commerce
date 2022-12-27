@@ -30,12 +30,15 @@ const Shop = () => {
   }
   const handlePriceFilter = (filter) => {
     setPriceFilter(filter);
+    setCurrentPage(1);
   };
   const handleRatingFilter = (filter) => {
     setRatingFilter(filter);
+    setCurrentPage(1);
   };
   const handleBrand = (brand) => {
     setBrand(brand);
+    setCurrentPage(1);
   };
 
   const filterByPrice = priceFilter.length

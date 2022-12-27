@@ -24,6 +24,10 @@ const Filter = ({ title = "", data = [], onFilter = () => false }) => {
             {name}
           </label>
         </div>
+        // <div class="form-group" key={id}>
+        //   <input type="checkbox" id={id} onChange={() => handleChange(value)} />
+        //   <label htmlFor={id}>{name}</label>
+        // </div>
       ))}
     </div>
   );
