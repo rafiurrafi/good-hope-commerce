@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import { getProductFromId } from "../../utils/utils";
 import "./product-details.style.scss";
 import { ProductContext } from "../../context/product.context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import img1 from "./img/boy-1.jpg";
 import img2 from "./img/girl-1.jpeg";
 import img3 from "./img/boy-2.jpg";
 import img4 from "./img/girl-2.jpg";
 import {
+  Button,
   H1,
   H4,
   SubHeading,
@@ -16,9 +19,23 @@ import Title from "../../componentns/title/title.component";
 import { useState } from "react";
 import { useReducer } from "react";
 import StarRatings from "react-star-ratings";
+import { CartContext } from "../../context/cart.context";
+function notify(msg) {
+  toast(msg, {
+    position: "top-right",
+    autoClose: 1000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+}
 const ProductDetails = () => {
   const { id } = useParams();
   let { products } = useContext(ProductContext);
+  const { addCartItem } = useContext(CartContext);
   const [product, setProduct] = useState(getProductFromId(id, products));
   useEffect(() => {
     if (!product)
@@ -90,6 +107,16 @@ const ProductDetails = () => {
                     {activeTab === "rev" && <ProductReview />}
                   </div>
                 </div>
+
+                <span
+                  onClick={() => {
+                    addCartItem(product);
+                    notify("Added to cart");
+                  }}
+                >
+                  <Button>Add to cart</Button>
+                </span>
+                <ToastContainer />
               </div>
             </div>
           </section>

@@ -10,7 +10,6 @@
     }
   }
   &__img {
-    border: 1px solid orangered;
     flex: 0 0 30%;
     max-height: 30rem;
     overflow: hidden;
@@ -61,7 +60,7 @@
 .product-tab {
   position: relative;
   border: 1px solid #f1f1f1;
-  margin-top: 5rem;
+  margin: 5rem 0;
   padding: 7rem 5rem 3rem;
   &__btns {
     position: absolute;
