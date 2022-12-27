@@ -55,3 +55,27 @@
     }
   }
 }
+.product-review {
+  &__container {
+    margin-top: 5rem;
+  }
+  &__single {
+    position: relative;
+    padding: 3rem;
+    padding-left: 14rem;
+    margin-bottom: 3rem;
+    background-color: #f6f6f6;
+    img {
+      position: absolute;
+      top: -2.5rem;
+      left: 2.5rem;
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    p {
+      margin-top: 2rem;
+    }
+  }
+}

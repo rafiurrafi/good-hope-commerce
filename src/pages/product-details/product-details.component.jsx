@@ -3,6 +3,10 @@ import { useParams } from "react-router-dom";
 import { getProductFromId } from "../../utils/utils";
 import "./product-details.style.scss";
 import { ProductContext } from "../../context/product.context";
+import img1 from "./img/boy-1.jpg";
+import img2 from "./img/girl-1.jpeg";
+import img3 from "./img/boy-2.jpg";
+import img4 from "./img/girl-2.jpg";
 import {
   H1,
   H4,
@@ -10,6 +14,8 @@ import {
 } from "../../componentns/typography/typography.component";
 import Title from "../../componentns/title/title.component";
 import { useState } from "react";
+import { useReducer } from "react";
+import StarRatings from "react-star-ratings";
 const ProductDetails = () => {
   const { id } = useParams();
   let { products, isLoading } = useContext(ProductContext);
@@ -53,6 +59,7 @@ const ProductDetails = () => {
                 <div className="product-tab__content">
                   <ProductDescription content={product.description} />
                   <ProductDetailsText product={product} />
+                  <ProductReview />
                 </div>
               </div>
             </div>
@@ -138,6 +145,69 @@ function ProductDetailsText({ product }) {
           <p>XL</p>
         </div>
       </div>
+    </div>
+  );
+}
+function ProductReview() {
+  const profilePics = [img1, img2, img3, img4];
+  const initialState = { comments: [], isLoading: true };
+  function commentReducer(state, action) {
+    const { type, payload } = action;
+    switch (type) {
+      case "toggle_loading":
+        return { ...state, isLoading: payload };
+      case "set_comments":
+        return { ...state, comments: payload, isLoading: false };
+      default:
+        throw new Error(`Unhandled action type ${type}`);
+    }
+  }
+  const [{ isLoading, comments }, dispatch] = useReducer(
+    commentReducer,
+    initialState
+  );
+  useEffect(() => {
+    dispatch({ type: "toggle_loading", payload: true });
+    fetch("https://dummyjson.com/comments")
+      .then((res) => res.json())
+      .then(({ comments }) =>
+        dispatch({ type: "set_comments", payload: comments })
+      )
+      .catch((err) => console.log(err));
+  }, []);
+  function getComments(comments) {
+    const cmnts = [];
+    for (var i = 0; i < 4; i++) {
+      const randomId = Math.floor(Math.random() * comments.length) + 1;
+      cmnts.push(comments[randomId]);
+    }
+    return cmnts;
+  }
+  return (
+    <div className="product-review">
+      <h1>Review</h1>
+      {isLoading ? (
+        <h1>Loading</h1>
+      ) : (
+        <div className="product-review__container">
+          {getComments(comments).map(
+            (comment, id) =>
+              comment && (
+                <div key={comment.id} className="product-review__single">
+                  <img src={profilePics[id]} />
+                  <h3>{comment.user.username}</h3>
+                  <StarRatings
+                    rating={Math.floor(Math.random() * 4) + 1}
+                    starDimension="10px"
+                    starSpacing="2px"
+                    starRatedColor="rgb(212,175,55)"
+                  />
+                  <p>{comment.body}</p>
+                </div>
+              )
+          )}
+        </div>
+      )}
     </div>
   );
 }
