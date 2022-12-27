@@ -13,7 +13,7 @@ export const ProductContext = createContext({ products: [] });
 const ProductProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(products);
+
   useEffect(() => {
     setIsLoading(true);
     fetch("https://dummyjson.com/products")

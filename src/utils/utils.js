@@ -1,5 +1,5 @@
 import _ from "lodash";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 export function getProductFromId(id, products) {
   return products.find((product) => product.id === +id);
 }
@@ -19,4 +19,15 @@ export function useClickOutside(handler) {
     return () => document.removeEventListener("mousedown", maybeHandler);
   }, []);
   return domRef;
+}
+
+export function useSingleProduct(id) {
+  const [product, setProduct] = useState({});
+  useEffect(() => {
+    fetch("https://dummyjson.com/products/" + id)
+      .then((response) => response.json())
+      .then((product) => setProduct(product))
+      .catch((err) => console.error(err));
+  }, []);
+  return product;
 }

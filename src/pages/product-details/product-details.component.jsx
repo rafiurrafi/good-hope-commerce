@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProductFromId } from "../../utils/utils";
+import { getProductFromId, useSingleProduct } from "../../utils/utils";
 import "./product-details.style.scss";
 import { ProductContext } from "../../context/product.context";
 import img1 from "./img/boy-1.jpg";
@@ -18,55 +18,65 @@ import { useReducer } from "react";
 import StarRatings from "react-star-ratings";
 const ProductDetails = () => {
   const { id } = useParams();
-  let { products, isLoading } = useContext(ProductContext);
-  let product = getProductFromId(id, products);
+  let { products } = useContext(ProductContext);
+  const [product, setProduct] = useState(getProductFromId(id, products));
+  useEffect(() => {
+    if (!product)
+      fetch("https://dummyjson.com/products/" + id)
+        .then((response) => response.json())
+        .then((product) => setProduct(product))
+        .catch((err) => console.error(err));
+  }, []);
+
   const [activeTab, setActiveTab] = useState("desc");
 
   return (
-    <div className="product-details">
-      <Title
-        title={product.title}
-        route="Shop - Details page"
-        image={product?.images[1]}
-      />
-      <section className="product-des">
-        {isLoading ? (
-          "Loading"
-        ) : (
-          <div className="container">
-            <div className="product-des__img">
-              <img src={product?.images[0]} alt="" />
-            </div>
-            <div className="product-des__content">
-              <H1 color="#0d779e">{product?.title}</H1>
-              <SubHeading color="#444">
-                {product.brand} -
-                <span className="product-des__rating">
-                  <span> {product?.rating}</span> (50 reviews)
-                </span>
-              </SubHeading>
-              <p className="product-des__price">
-                <span>${product?.price} </span>
-                <del>${product.price * Math.floor(Math.random() * 3 + 1)}</del>
-              </p>
+    <>
+      {product && (
+        <div className="product-details">
+          <Title
+            title={product.title}
+            route="Shop - Details page"
+            image={product?.images[1]}
+          />
+          <section className="product-des">
+            <div className="container">
+              <div className="product-des__img">
+                <img src={product?.images[0]} alt="" />
+              </div>
+              <div className="product-des__content">
+                <H1 color="#0d779e">{product?.title}</H1>
+                <SubHeading color="#444">
+                  {product.brand} -
+                  <span className="product-des__rating">
+                    <span> {product?.rating}</span> (50 reviews)
+                  </span>
+                </SubHeading>
+                <p className="product-des__price">
+                  <span>${product?.price} </span>
+                  <del>
+                    ${product.price * Math.floor(Math.random() * 3 + 1)}
+                  </del>
+                </p>
 
-              <div className="product-tab">
-                <div className="product-tab__btns">
-                  <button>Description</button>
-                  <button>Details</button>
-                  <button>Reviews</button>
-                </div>
-                <div className="product-tab__content">
-                  <ProductDescription content={product.description} />
-                  <ProductDetailsText product={product} />
-                  <ProductReview />
+                <div className="product-tab">
+                  <div className="product-tab__btns">
+                    <button>Description</button>
+                    <button>Details</button>
+                    <button>Reviews</button>
+                  </div>
+                  <div className="product-tab__content">
+                    <ProductDescription content={product.description} />
+                    <ProductDetailsText product={product} />
+                    <ProductReview />
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-        )}
-      </section>
-    </div>
+          </section>
+        </div>
+      )}
+    </>
   );
 };
 
