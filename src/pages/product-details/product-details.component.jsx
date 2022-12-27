@@ -4,6 +4,7 @@ import { getProductFromId } from "../../utils/utils";
 import "./product-details.style.scss";
 import { ProductContext } from "../../context/product.context";
 import { H4 } from "../../componentns/typography/typography.component";
+import Title from "../../componentns/title/title.component";
 const ProductDetails = () => {
   const { id } = useParams();
   let { products, isLoading } = useContext(ProductContext);
@@ -15,6 +16,11 @@ const ProductDetails = () => {
 
   return (
     <div className="product-details">
+      <Title
+        title={product.title}
+        route="Shop - Details page"
+        image={product?.images[1]}
+      />
       <section className="product-des">
         {isLoading ? (
           "Loading"
