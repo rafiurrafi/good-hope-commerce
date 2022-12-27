@@ -1,5 +1,5 @@
 .product-details {
-  padding: 5rem 0;
+  padding-bottom: 5rem;
   // background-image: linear-gradient(
   //   to right,
   //   rgba(0, 0, 0, 0.7),
@@ -51,6 +51,29 @@
         b {
           font-size: 110%;
         }
+      }
+    }
+  }
+}
+.product-tab {
+  position: relative;
+  border: 1px solid #f1f1f1;
+  margin-top: 5rem;
+  padding: 7rem 5rem 3rem;
+  &__btns {
+    position: absolute;
+    top: -1.5rem;
+    left: 5rem;
+    background-color: white;
+    button {
+      margin: 0 1rem;
+      padding: 0 2rem;
+      height: 3rem;
+      font-size: 1.8rem;
+      font-weight: 600;
+      &.active {
+        color: white;
+        background-color: var(--notification-color);
       }
     }
   }

@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { getProductFromId, useSingleProduct } from "../../utils/utils";
+import { getProductFromId } from "../../utils/utils";
 import "./product-details.style.scss";
 import { ProductContext } from "../../context/product.context";
 import img1 from "./img/boy-1.jpg";
@@ -61,14 +61,33 @@ const ProductDetails = () => {
 
                 <div className="product-tab">
                   <div className="product-tab__btns">
-                    <button>Description</button>
-                    <button>Details</button>
-                    <button>Reviews</button>
+                    <button
+                      onClick={() => setActiveTab("desc")}
+                      className={`${activeTab === "desc" ? "active" : ""}`}
+                    >
+                      Description
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("det")}
+                      className={`${activeTab === "det" ? "active" : ""}`}
+                    >
+                      Details
+                    </button>
+                    <button
+                      onClick={() => setActiveTab("rev")}
+                      className={`${activeTab === "rev" ? "active" : ""}`}
+                    >
+                      Reviews
+                    </button>
                   </div>
                   <div className="product-tab__content">
-                    <ProductDescription content={product.description} />
-                    <ProductDetailsText product={product} />
-                    <ProductReview />
+                    {activeTab === "desc" && (
+                      <ProductDescription content={product.description} />
+                    )}
+                    {activeTab === "det" && (
+                      <ProductDetailsText product={product} />
+                    )}
+                    {activeTab === "rev" && <ProductReview />}
                   </div>
                 </div>
               </div>
