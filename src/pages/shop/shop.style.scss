@@ -7,11 +7,32 @@
     @media (max-width: 992px) {
       grid-template-columns: 1fr 4fr;
     }
+    @media (max-width: 768px) {
+      display: block;
+      .shop__filter {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
   }
   &__items-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
     grid-gap: 2rem;
+  }
+  &__filter-cat {
+    margin-bottom: 3rem;
+    select {
+      max-width: 15rem;
+    }
+  }
+  &__items {
+    h2 {
+      span {
+        color: var(--notification-color);
+      }
+      margin-bottom: 3rem;
+    }
   }
 }
 

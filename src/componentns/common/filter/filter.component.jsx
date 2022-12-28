@@ -11,7 +11,7 @@ const Filter = ({ title = "", data = [], onFilter = () => false }) => {
   };
   return (
     <div className="filter my-4">
-      <h4 style={{ marginBottom: "3rem" }}>{title}</h4>
+      <h4 style={{ marginBottom: "2rem" }}>{title}</h4>
       {data.map(({ id, name, value }) => (
         <div class="form-group" key={id}>
           <input type="checkbox" id={id} onChange={() => handleChange(value)} />

@@ -69,9 +69,6 @@ const Shop = () => {
         <Container>
           <div className="shop__filter">
             <div className="shop__filter-cat">
-              <div></div>
-            </div>
-            <div className="shop__filter-cat">
               <Filter
                 onFilter={handlePriceFilter}
                 data={priceFilterService}
@@ -89,6 +86,7 @@ const Shop = () => {
             </div>
             <div className="shop__filter-cat">
               <div>
+                <h4 style={{ marginBottom: "2rem" }}>Search Using Cat</h4>
                 <select
                   name=""
                   id=""
@@ -108,7 +106,9 @@ const Shop = () => {
               <h1>Loading</h1>
             ) : (
               <>
-                <h2>{paginatedProducts.length}</h2>
+                <h2>
+                  You have <span>{paginatedProducts.length}</span> products
+                </h2>
                 <div className="shop__items-container">
                   {paginatedProducts.length ? (
                     paginatedProducts.map((product) => (

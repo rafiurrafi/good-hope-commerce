@@ -62,32 +62,6 @@ const SpecificShop = () => {
       <Title title="Shop" route="Home - Shop Page" />
       <div className="shop">
         <Container>
-          {/* <div className="shop__filter">
-            <div className="shop__filter-cat">
-              <H4>Filter by Category</H4>
-              <div></div>
-            </div>
-            <div className="shop__filter-cat">
-              <H4>Filter by Price</H4>
-              <div>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              </div>
-            </div>
-            <div className="shop__filter-cat">
-              <H4>Filter by Price</H4>
-              <div>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-                <SimpleCheckbox>$0 - $100</SimpleCheckbox>
-              </div>
-            </div>
-          </div> */}
           <div className="shop__filter">
             <div className="shop__filter-cat">
               <div></div>
