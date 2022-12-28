@@ -67,8 +67,11 @@ const Wishlist = () => {
                 </tbody>
               </table>
             ) : (
-              <div>
-                <h1>No wishlist</h1>
+              <div className="wishlist-empty">
+                <h1>
+                  No <span>wishlist</span>
+                </h1>
+                <ButtonLink to="/shop/all">Get Products</ButtonLink>
               </div>
             )}
           </div>

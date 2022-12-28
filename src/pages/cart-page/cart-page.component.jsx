@@ -17,14 +17,15 @@ const CartPage = () => {
   return (
     <div className="cart-page">
       <Title title="Cart" route="Home - cart page" />
-      <Container>
-        <div className="cart-page__left">
-          <h1>
-            Your <span>Cart</span>
-          </h1>
-          <div className="cart-table__container">
-            {/* table started  */}
-            {cartItems.length ? (
+      {cartItems.length ? (
+        <Container>
+          <div className="cart-page__left">
+            <h1>
+              Your <span>Cart</span>
+            </h1>
+            <div className="cart-table__container">
+              {/* table started  */}
+
               <table>
                 <thead>
                   <tr>
@@ -71,36 +72,44 @@ const CartPage = () => {
                   ))}
                 </tbody>
               </table>
-            ) : (
-              <div>No items found</div>
-            )}
+            </div>
           </div>
-        </div>
-        <div className="cart-page__right">
-          <InputWithButton
-            placeholder="Enter Coupon"
-            buttonText="Apply Coupon"
-          />
-          <div className="cart-page__summary">
-            <h1 className="cart-page__heading">cart summary</h1>
-            <div>
-              <p>Subtotal</p>
-              <p>${cartTotal}</p>
-            </div>
-            <div>
-              <p>Shipping</p>
-              <p>$150</p>
-            </div>
-            <hr />
+          <div className="cart-page__right">
+            <InputWithButton
+              placeholder="Enter Coupon"
+              buttonText="Apply Coupon"
+            />
+            <div className="cart-page__summary">
+              <h1 className="cart-page__heading">cart summary</h1>
+              <div>
+                <p>Subtotal</p>
+                <p>${cartTotal}</p>
+              </div>
+              <div>
+                <p>Shipping</p>
+                <p>$150</p>
+              </div>
+              <hr />
 
-            <div style={{ fontWeight: 700 }}>
-              <p>Shipping</p>
-              <p>${cartTotal + 150}</p>
+              <div style={{ fontWeight: 700 }}>
+                <p>Shipping</p>
+                <p>${cartTotal + 150}</p>
+              </div>
+              <ButtonLink className="cart-page__btn">Go to checkout</ButtonLink>
             </div>
-            <ButtonLink className="cart-page__btn">Go to checkout</ButtonLink>
           </div>
+        </Container>
+      ) : (
+        <div
+          className="wishlist-empty"
+          style={{ width: "70%", marginLeft: "15%" }}
+        >
+          <h1>
+            No <span>Cart </span>Item
+          </h1>
+          <ButtonLink to="/shop/all">Get Products</ButtonLink>
         </div>
-      </Container>
+      )}
     </div>
   );
 };

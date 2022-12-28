@@ -14,6 +14,8 @@ import { ProductContext } from "../../context/product.context";
 import { featuresData, testimonialData } from "../../utils/data";
 import coverImage from "./cover-1.jpeg";
 import "./home.style.scss";
+import fashionBoyImg from "./img/fashion-boy.jpg";
+import fashionGirlImg from "./img/women.png";
 const Home = () => {
   const { products, isLoading } = useContext(ProductContext);
   const settings = {
@@ -38,8 +40,12 @@ const Home = () => {
         </BigHeading>
         <Container>
           <div className="home-collections">
-            <SingleFashion />
-            <SingleFashion type="right" />
+            <SingleFashion image={fashionBoyImg} />
+            <SingleFashion
+              image={fashionGirlImg}
+              type="right"
+              collection="women"
+            />
           </div>
           <ProductTimer />
         </Container>
@@ -106,9 +112,9 @@ const Home = () => {
           </div>
         </Container>
       </section>
-      <section className="home-blog">
+      {/* <section className="home-blog">
         <BlogCard />
-      </section>
+      </section> */}
     </div>
   );
 };

@@ -11,13 +11,13 @@ import { useState } from "react";
 import { paginate } from "../../utils/utils";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
+import "../shop/shop.style.scss";
 
 import Filter from "../../componentns/common/filter/filter.component";
 import {
   priceFilterService,
   ratingFilterService,
 } from "../../utils/filterService";
-import menImg from "./img/men.png";
 const SpecificShop = () => {
   const { cat } = useParams();
   const [products, setProducts] = useState([]);
@@ -63,9 +63,6 @@ const SpecificShop = () => {
       <div className="shop">
         <Container>
           <div className="shop__filter">
-            <div className="shop__filter-cat">
-              <div></div>
-            </div>
             <div className="shop__filter-cat">
               <Filter
                 onFilter={handlePriceFilter}

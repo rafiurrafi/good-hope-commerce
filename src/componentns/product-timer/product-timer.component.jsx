@@ -7,7 +7,7 @@ import {
   SmallText,
 } from "../typography/typography.component";
 let timeInterval;
-const DATE_LIMIT = "31 dec 2022";
+const DATE_LIMIT = "31 dec 2023";
 function calculateTime() {
   const millisecToSec = 1000;
   const upcomingTime = Date.parse(new Date(DATE_LIMIT));

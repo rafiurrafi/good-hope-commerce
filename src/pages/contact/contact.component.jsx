@@ -13,7 +13,7 @@ import { MdCall } from "react-icons/md";
 const Contact = () => {
   return (
     <div className="contact">
-      <Title title="Cart" route="Home - Checkout Page" />
+      <Title title="Contact" route="Home - Contact Page" />
       <h4 className="contact__title">
         Contact for any <span>Query</span>
       </h4>

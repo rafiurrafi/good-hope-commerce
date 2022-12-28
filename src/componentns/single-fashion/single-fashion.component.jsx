@@ -1,12 +1,10 @@
 import "./single-fashion.style.scss";
-import boy from "./img/fashion-boy.jpg";
-import girl from "./img/fashion-girl.jpg";
 import {
   ButtonLink,
   HeadingLink,
   SmallText,
 } from "../typography/typography.component";
-const SingleFashion = ({ type = "" }) => {
+const SingleFashion = ({ type = "", collection = "men", image }) => {
   return (
     <div
       className={`single-fashion ${
@@ -14,10 +12,10 @@ const SingleFashion = ({ type = "" }) => {
       }`}
     >
       <div className="single-fashion__img">
-        <img src={boy} alt="" />
+        <img src={image} alt="" />
       </div>
       <div className="single-fashion__content">
-        <HeadingLink>Best Collection For men</HeadingLink>
+        <HeadingLink>Best Collection For {collection}</HeadingLink>
         <SmallText>
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout.
