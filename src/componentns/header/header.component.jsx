@@ -98,7 +98,9 @@ export function HeaderMain() {
     <header className="header">
       <Container>
         <Link to="/" className="header__logo">
-          Logo
+          <h3>
+            Good <span>Hope</span>
+          </h3>
         </Link>
         <ul className="header__menus">
           <li>
