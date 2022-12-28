@@ -12,23 +12,20 @@ import "./cart-page.style.scss";
 import InputWithButton from "../../componentns/common/input/input.component";
 const tableRow = ["Product", "Price", "Quantity", "Total", "Action"];
 const CartPage = () => {
-  const { cartItems, addCartItem, removeCartItem, clearCartItem } =
+  const { cartItems, addCartItem, removeCartItem, clearCartItem, cartTotal } =
     useContext(CartContext);
-  console.log(cartItems);
   return (
     <div className="cart-page">
       <Title title="Cart" route="Home - cart page" />
       <Container>
         <div className="cart-page__left">
+          <h1>
+            Your <span>Cart</span>
+          </h1>
           <div className="cart-table__container">
             {/* table started  */}
             {cartItems.length ? (
               <table>
-                <caption>
-                  <h1>
-                    Your <span>Cart</span>
-                  </h1>
-                </caption>
                 <thead>
                   <tr>
                     {tableRow.map((t) => (
@@ -88,7 +85,7 @@ const CartPage = () => {
             <h1 className="cart-page__heading">cart summary</h1>
             <div>
               <p>Subtotal</p>
-              <p>$150</p>
+              <p>${cartTotal}</p>
             </div>
             <div>
               <p>Shipping</p>
@@ -98,7 +95,7 @@ const CartPage = () => {
 
             <div style={{ fontWeight: 700 }}>
               <p>Shipping</p>
-              <p>$150</p>
+              <p>${cartTotal + 150}</p>
             </div>
             <ButtonLink className="cart-page__btn">Go to checkout</ButtonLink>
           </div>

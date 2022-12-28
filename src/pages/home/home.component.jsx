@@ -29,7 +29,6 @@ const Home = () => {
   return (
     <div>
       <Hero />
-      {/* <Container></Container> */}
       <section className="section-home-collection">
         <BigHeading
           color="black"

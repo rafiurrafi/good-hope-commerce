@@ -17,8 +17,8 @@ import {
   priceFilterService,
   ratingFilterService,
 } from "../../utils/filterService";
+import menImg from "./img/men.png";
 const SpecificShop = () => {
-  //
   const { cat } = useParams();
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

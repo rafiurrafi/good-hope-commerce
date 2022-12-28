@@ -11,6 +11,14 @@
   }
   &__left {
     flex: 0 0 65%;
+    h1 {
+      margin-bottom: 5rem;
+      font-weight: 400;
+      text-align: center;
+      span {
+        color: var(--color-primary);
+      }
+    }
   }
   &__right {
     flex: 1;
@@ -49,15 +57,6 @@
     // white-space: nowrap;
     min-width: 72rem;
     margin-bottom: 5rem;
-    caption {
-      margin-bottom: 5rem;
-      h1 {
-        font-weight: 400;
-      }
-      span {
-        color: var(--color-primary);
-      }
-    }
   }
   img {
     height: 5rem;
