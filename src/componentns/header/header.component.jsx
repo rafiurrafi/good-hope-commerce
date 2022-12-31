@@ -16,14 +16,17 @@ import { signUserOut } from "../../utils/firebase.utils";
 import MenuDropdown from "../common/menu-dropdown/menu-dropdown.component";
 import { useState } from "react";
 import { useClickOutside } from "../../utils/utils";
+import loginProfile from "./img/login-profile.jpeg";
 export function HeaderTop() {
   const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+  const [showSign, setShowSign] = useState(false);
   const domRef = useClickOutside(() => setIsCartOpen(false));
   const { user, setUser } = useContext(UserContext);
   async function handleSignOut() {
     await signUserOut();
     setUser(null);
   }
+  console.log(user);
   return (
     <div className="header-top">
       <Container>
@@ -34,14 +37,18 @@ export function HeaderTop() {
           </div>
         ) : (
           <div className="header-top__user">
-            <img src="" alt="" />
-            <div>
-              <button>User</button>
-              <div>
-                <button>Profile</button>
+            <div
+              className="header-top__user-name"
+              onClick={() => setShowSign(!showSign)}
+            >
+              <img src={loginProfile} alt="" />
+              <span>{user.displayName || "Modon"}</span>
+            </div>
+            {showSign && (
+              <div className="header-top__user-content">
                 <button onClick={handleSignOut}>Sign out</button>
               </div>
-            </div>
+            )}
           </div>
         )}
 

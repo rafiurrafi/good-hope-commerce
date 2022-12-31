@@ -75,6 +75,38 @@
       right: -1rem;
     }
   }
+  &__user {
+    position: relative;
+
+    img {
+      height: 4rem;
+      width: 4rem;
+      border-radius: 50%;
+    }
+    &-name {
+      display: flex;
+      gap: 1rem;
+      color: white;
+      align-items: center;
+      &:hover {
+        color: var(--color-primary);
+        cursor: pointer;
+      }
+    }
+    &-content {
+      position: absolute;
+      top: 4.5rem;
+      left: 0;
+      background-color: white;
+      padding: 1rem;
+      z-index: 2;
+      box-shadow: 0 0 1rem rgba($color: #000000, $alpha: 0.15);
+      button {
+        color: #444;
+        width: 10rem;
+      }
+    }
+  }
 }
 .header {
   padding: 2.5rem 0;
