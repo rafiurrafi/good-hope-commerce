@@ -5,11 +5,18 @@ import {
 } from "../../componentns/common/input/input.component";
 import Title from "../../componentns/title/title.component";
 import "./checkout.style.scss";
-import { ButtonLink } from "../../componentns/typography/typography.component";
+import "../cart-page/cart-page.style.scss";
+import {
+  Button,
+  ButtonLink,
+} from "../../componentns/typography/typography.component";
+import { useContext } from "react";
+import { CartContext } from "../../context/cart.context";
 const Checkout = () => {
+  const { cartTotal } = useContext(CartContext);
   return (
     <div className="checkout">
-      <Title title="Cart" route="Home - Checkout Page" />
+      <Title title="Checkout" route="Home - Checkout Page" />
       <Container>
         <div className="checkout__address">
           <h1 className="cart-page__heading">Billing Address</h1>
@@ -33,12 +40,11 @@ const Checkout = () => {
           <SimpleCheckbox>Ship to different address</SimpleCheckbox>
         </div>
         <div className="checkout__pay">
-          {" "}
           <div className="cart-page__summary">
-            <h1 className="cart-page__heading">cart summary</h1>
+            <h1 className="cart-page__heading">Checkout summary</h1>
             <div>
               <p>Subtotal</p>
-              <p>$150</p>
+              <p>${cartTotal}</p>
             </div>
             <div>
               <p>Shipping</p>
@@ -48,9 +54,11 @@ const Checkout = () => {
 
             <div style={{ fontWeight: 700 }}>
               <p>Shipping</p>
-              <p>$150</p>
+              <p>${cartTotal + 150}</p>
             </div>
-            <ButtonLink>Go to checkout</ButtonLink>
+            <ButtonLink to="/checkout" className="cart-page__btn">
+              Payment
+            </ButtonLink>
           </div>
         </div>
       </Container>

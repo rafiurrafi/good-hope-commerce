@@ -65,10 +65,10 @@ export function ButtonIcon({ icon, color = "white" }) {
     </button>
   );
 }
-export function Button({ children, type, disabled = false }) {
+export function Button({ children, type, disabled = false, style = {} }) {
   //block, small large medium
   return (
-    <button disabled={disabled} className={` btn ${type}`}>
+    <button disabled={disabled} className={` btn ${type}`} style={{ ...style }}>
       {children}
     </button>
   );

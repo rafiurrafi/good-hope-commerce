@@ -10,6 +10,7 @@ import {
   BigHeading,
   Button,
   SubHeading,
+  ButtonLink,
 } from "../typography/typography.component";
 const Hero = () => {
   const settings = {
@@ -34,7 +35,7 @@ const Hero = () => {
             <SubHeading style={{ margin: "1.5rem 0" }}>
               Unleash your fear, Free your Mind, Feel your body
             </SubHeading>
-            <Button>Get Started</Button>
+            <ButtonLink to="/shop/all">Get Started</ButtonLink>
           </Container>
         </div>
         <div className="hero__single hero__single--2">
@@ -47,7 +48,7 @@ const Hero = () => {
             <SubHeading style={{ margin: "1.5rem 0" }}>
               Unleash your fear, Free your Mind, Feel your body
             </SubHeading>
-            <Button>Get Started</Button>
+            <ButtonLink to="/shop/all">Get Started</ButtonLink>
           </Container>
         </div>
         <div className="hero__single hero__single--3">
@@ -60,7 +61,7 @@ const Hero = () => {
             <SubHeading style={{ margin: "1.5rem 0" }} color="black">
               Unleash your fear, Free your Mind, Feel your body
             </SubHeading>
-            <Button>Get Started</Button>
+            <ButtonLink to="/shop/all">Get Started</ButtonLink>
           </Container>
         </div>
       </Slider>

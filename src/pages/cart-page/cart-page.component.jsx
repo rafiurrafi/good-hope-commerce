@@ -95,7 +95,9 @@ const CartPage = () => {
                 <p>Shipping</p>
                 <p>${cartTotal + 150}</p>
               </div>
-              <ButtonLink className="cart-page__btn">Go to checkout</ButtonLink>
+              <ButtonLink to="/checkout" className="cart-page__btn">
+                Go to checkout
+              </ButtonLink>
             </div>
           </div>
         </Container>

@@ -61,7 +61,6 @@ const Shop = () => {
     : filterByBrand;
 
   const paginatedProducts = paginate(filterByRating, currentPage, pageSize);
-
   return (
     <>
       <Title title="Shop" route="Home - Shop Page" />
@@ -95,7 +94,9 @@ const Shop = () => {
                 >
                   <option value="">Select Brand</option>
                   {products.map((product) => (
-                    <option value={product.brand}>{product.brand}</option>
+                    <option key={product.id} value={product.brand}>
+                      {product.brand}
+                    </option>
                   ))}
                 </select>
               </div>
